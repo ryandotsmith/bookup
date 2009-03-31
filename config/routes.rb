@@ -1,4 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
+  map.root :controller => 'books', :action => 'index'
+  map.resources :users, :has_one => [:password, :confirmation]
+  map.resource :session
+  map.resources :passwords
+  map.resources :books
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
