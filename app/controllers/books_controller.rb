@@ -1,18 +1,19 @@
 class BooksController < ApplicationController
-
+  before_filter :authenticate
+  before_filter :load_user
   def index
     @books = Book.find(:all)
   end
   
   def new
-    @book = Book.new
+    @book = @user.books.build
     respond_to do |format|
       format.html # new.html.erb
     end    
   end
 
   def create
-    @book = Book.new( params[:book] )
+    @book = @user.books.build( params[:book] )
     respond_to do |format|
       if @book.save
         flash[:notice] = 'Idea was successfully created.'
@@ -27,4 +28,11 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end#method_name
   
-end
+protected
+  
+  def load_user
+    @user = User.find(session[:user_id])
+  end
+
+end#class
+

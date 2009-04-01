@@ -1,1 +1,5 @@
-<%= @books %>
+<% if logged_in? %>
+	<%= render :partial => '/sessions/session_bar'%>
+	<p>add a new book to the marketplace</p>
+	<%= render :partial => 'users_books'%>
+<% end %>

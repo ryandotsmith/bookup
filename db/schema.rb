@@ -12,6 +12,7 @@
 ActiveRecord::Schema.define(:version => 20090331170655) do
 
   create_table "books", :force => true do |t|
+    t.integer  "user_id"
     t.string   "title"
     t.string   "isbn"
     t.text     "description"

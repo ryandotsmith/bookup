@@ -1,0 +1,6 @@
+<h3>your books</h3>
+<p>
+<% current_user.books.each do |book|%>	
+	<%= book.title %>
+<% end %>
+</p>

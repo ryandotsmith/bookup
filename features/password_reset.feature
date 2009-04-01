@@ -18,7 +18,7 @@ Feature: Password reset
       Given I signed up with "email@person.com/password"
       When I follow the password reset link sent to "email@person.com"
       And I update my password with "newpassword/wrongconfirmation"
-      Then I should see error messages
+      Then I should see "Password doesn't match confirmation" 
       And I should not be signed in
 
     Scenario: User is signed up and updates his password

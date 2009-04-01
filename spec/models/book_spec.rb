@@ -1,4 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require File.expand_path(File.dirname(__FILE__) + '/../factories/book_factory.rb')
 
 describe Book do
   before(:each) do
@@ -10,6 +11,9 @@ describe Book do
   end
 
   it "should create a new instance given valid attributes" do
-    Book.create!(@valid_attributes)
+    @user = Factory(:email_confirmed_user)
+    @book = Factory( :book , :user => @user )
+    @user.books.include?(@book).should eql( true )
+    @book.should be_valid
   end
 end
