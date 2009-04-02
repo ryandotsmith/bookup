@@ -12,8 +12,12 @@ module NavigationHelpers
       new_password_path
     when /books index page/
       books_path
+    when /show book page/
+      book_path
     when /add new book/
       new_book_path
+    when /add new listing page/
+      new_book_listing_path
     else
       raise "Can't find mapping from \"#{page_name}\" to a path."
     end

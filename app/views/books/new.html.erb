@@ -1,6 +1,12 @@
-<% form_for(@book) do |f| %>
-    <li><%= f.text_field :title %></li>
-    <li><%= f.text_field :isbn %></li>
-		<li><%= f.text_field :description %></li>
-    <li><%= f.submit "submit" %></li>
-<% end %>	
+<div id="center">
+	<% form_for(@book) do |f| %>
+		  <li><%= f.label :title %></li>
+	    <li><%= f.text_field :title %></li>
+		  <li><%= f.label :isbn %></li>
+	    <li><%= f.text_field :isbn %></li>
+		  <li><%= f.label :description %></li>
+			<li><%= f.text_field :description %></li>
+	    <li><%= f.submit "submit" %></li>
+	<% end %>	
+	
+</div><!--end center-->

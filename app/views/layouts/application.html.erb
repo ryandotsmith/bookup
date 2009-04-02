@@ -5,12 +5,29 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>BookUp <%= controller.action_name %></title>
+
+	<% get_css.each do |sheet| %>
+		<%= stylesheet_link_tag sheet %>
+	<% end %>
+	<% get_js.each do |js|%>
+		<%= javascript_include_tag js %>
+	<% end%>
 </head>
 
 <body>
-	<%= flash[:notice]  %>
-	<%= flash[:failure] %>
-	<%= flash[:success] %>
-	<%= yield  %>
+	<div id="header">
+		<%= link_to image_tag("bookup_logo.png"), root_url %>
+		<div id="user_bar">
+			<%= render :partial => '/sessions/session_bar'%>
+		</div><!--end user_bar-->
+	</div><!--end header-->
+	<div id="info_bar">
+		<%= flash[:notice]  %>
+		<%= flash[:failure] %>
+		<%= flash[:success] %>		
+	</div><!--end info_bar-->
+	<div id="container">
+		<%= yield  %>		
+	</div><!--end container-->
 </body>
 </html>

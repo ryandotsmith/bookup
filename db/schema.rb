@@ -9,16 +9,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090331170655) do
+ActiveRecord::Schema.define(:version => 20090402000644) do
 
   create_table "books", :force => true do |t|
-    t.integer  "user_id"
     t.string   "title"
     t.string   "isbn"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "listings", :force => true do |t|
+    t.integer  "book_id"
+    t.integer  "user_id"
+    t.integer  "market_status", :default => 1
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rates", :force => true do |t|
+    t.integer "score"
+  end
+
+  create_table "ratings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "rate_id"
+    t.integer  "rateable_id"
+    t.string   "rateable_type", :limit => 32
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ratings", ["rate_id"], :name => "index_ratings_on_rate_id"
+  add_index "ratings", ["rateable_id", "rateable_type"], :name => "index_ratings_on_rateable_id_and_rateable_type"
 
   create_table "users", :force => true do |t|
     t.string   "email"
@@ -27,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20090331170655) do
     t.string   "token",              :limit => 128
     t.datetime "token_expires_at"
     t.boolean  "email_confirmed",                   :default => false, :null => false
+    t.string   "name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

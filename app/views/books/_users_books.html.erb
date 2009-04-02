@@ -1,6 +1,19 @@
 <h3>your books</h3>
-<p>
-<% current_user.books.each do |book|%>	
-	<%= book.title %>
-<% end %>
-</p>
+
+<table>
+<thead>
+  <tr>
+	  <th>Title</th>
+	  <th>Status</th>  
+	  <th>Listing Date</th>  
+	  <th>Last Hit Date</th>  
+  </tr>
+</thead>
+<tbdoy>
+
+</tbody>
+</table>
+	
+
+
+<%= link_to "add a new book to the marketplace", new_book_path %>

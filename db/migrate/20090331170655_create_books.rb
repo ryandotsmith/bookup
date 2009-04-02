@@ -1,7 +1,6 @@
 class CreateBooks < ActiveRecord::Migration
   def self.up
     create_table :books do |t|
-      t.belongs_to :user
       t.string :title
       t.string :isbn
       t.text :description

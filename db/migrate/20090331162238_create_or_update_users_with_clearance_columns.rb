@@ -7,6 +7,7 @@ class CreateOrUpdateUsersWithClearanceColumns < ActiveRecord::Migration
       t.string   :token,              :limit => 128
       t.datetime :token_expires_at
       t.boolean  :email_confirmed, :default => false, :null => false
+      t.string   :name
     end
 
     add_index :users, [:id, :token]

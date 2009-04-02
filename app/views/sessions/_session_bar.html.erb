@@ -1,6 +1,18 @@
 <div id="session_bar">
-	<p><%= current_user.email %></p>
-	<%= link_to "logout!", { :controller 	=> 'sessions', 
-													 :action 			=> 'destroy'}, 
-													:method => :delete    %>
+<ul>
+<% if logged_in? %>
+
+	<li> <%= current_user.email %> </li>
+	<li>
+	<%= link_to "sign out", { :controller 	=> 'sessions', 
+													 	:action 			=> 'destroy'}, 
+														:method => :delete    %>
+	</li>
+<% else %>
+	<li>
+	<%= link_to "sign in", { 	:controller 	=> 'sessions', 
+												 		:action 			=> 'new' } %>
+	</li>
+<% end %>
+</ul>
 </div><!--end session_bar-->

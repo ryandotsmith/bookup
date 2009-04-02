@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate, :except => [:index,:show]
   before_filter :load_user
   def index
     @books = Book.find(:all)
@@ -16,8 +16,8 @@ class BooksController < ApplicationController
     @book = @user.books.build( params[:book] )
     respond_to do |format|
       if @book.save
-        flash[:notice] = 'Idea was successfully created.'
-        format.html { redirect_to @book }
+        flash[:notice] = 'Book was successfully added to list'
+        format.html { redirect_to books_path }
       else
         format.html { render :action => "new" }
       end
@@ -25,13 +25,13 @@ class BooksController < ApplicationController
   end
   
   def show
-    @book = Book.find(params[:id])
+    @book = Book.find( params[:id] )
   end#method_name
   
 protected
   
   def load_user
-    @user = User.find(session[:user_id])
+    @user = current_user
   end
 
 end#class

@@ -1,19 +1,20 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-require File.expand_path(File.dirname(__FILE__) + '/../factories/book_factory.rb')
 
-describe Book do
-  before(:each) do
-    @valid_attributes = {
-      :title => "value for title",
-      :isbn => "value for isbn",
-      :description => "value for description"
-    }
-  end
+describe "create a new book" do
 
   it "should create a new instance given valid attributes" do
-    @user = Factory(:email_confirmed_user)
-    @book = Factory( :book , :user => @user )
-    @user.books.include?(@book).should eql( true )
+    @book = Factory( :book )
     @book.should be_valid
+  end
+
+end
+
+describe "find how many copies of this book are for sale" do
+
+  it "should return the number of listings marked 'for sale' " do
+    @book = Factory(:book)
+    @user = Factory(:email_confirmed_user, :email => "james_brown@gmail.com")
+    @user.listings.create(:book_id => @book.id)
+    @book.get_all_for_sale.length.should == 1
   end
 end

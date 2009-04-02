@@ -1,3 +1,10 @@
-<%= @book.title %>
-<%= @book.isbn %>
-<%= @book.description %>
+<div id="center">
+	<h1>
+	<%= @book.title %>
+	<%= @book.isbn %>
+	<%= @book.description %>
+	</h1>
+	<%= link_to "sell your copy", new_book_listing_path(@book)%>
+	<h2>People who want to sell this book </h2>
+	<%= render :partial => 'listings/book_listings', :locals => { :book => @book } %>
+</div><!--end center-->

@@ -1,0 +1,21 @@
+<table id='show_book_listings_table' class='tablesorter'>
+<thead>
+  <tr>
+	  <th>status</th>
+	  <th>listing date</th>  
+	  <th>email</th>
+	  <th>comments</th>
+  </tr>
+</thead>
+<tbdoy>
+	<% book.listings.each do |listing|%>
+  <tr>
+    <td><%= get_market_status( listing )%></td>  
+    <td><%= listing.created_at.to_s %></td>  
+    <td><%= listing.user.email %></td>  
+    <td><%= listing.comment %></td>
+    <td></td>  
+  </tr>
+<% end %>
+</tbody>
+</table>	

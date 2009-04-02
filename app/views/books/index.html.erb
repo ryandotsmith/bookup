@@ -1,5 +1,17 @@
-<% if logged_in? %>
-	<%= render :partial => '/sessions/session_bar'%>
-	<p>add a new book to the marketplace</p>
-	<%= render :partial => 'users_books'%>
-<% end %>
+<div id="center">
+	<h1>{ Leave your textbook behind }</h1>
+	<table id='books_index_table' class='tablesorter'>
+	<thead>
+		<th>Title</th>
+		<th>Description</th>
+		<th>isbn</th>
+	</thead>
+	<% @books.each do |book|%>
+	<tr>
+	  <td><%= link_to book.title, book %></td>
+		<td><%= book.description %></td>
+		<td><%= book.isbn %></td>
+	</tr>
+	<% end %>
+	</table>	
+</div><!--end center-->

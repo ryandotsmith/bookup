@@ -27,3 +27,5 @@ Rails::Initializer.run do |config|
                :version => '0.5.3'
 
 end
+ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.merge!(:default => '%m/%d/%Y')
+ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:default => '%m/%d/%Y')
