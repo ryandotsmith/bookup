@@ -14,7 +14,7 @@ module NavigationHelpers
       books_path
     when /show book page/
       book_path
-    when /add new book/
+    when /add new book page/
       new_book_path
     when /add new listing page/
       new_book_listing_path

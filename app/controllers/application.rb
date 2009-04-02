@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
   
-
+  ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+    %(<div style="color:red">invalid</div>) + html_tag
+  end
 
 end

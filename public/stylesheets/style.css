@@ -1,3 +1,4 @@
+
 body {
 	background-color:#5C7EE6;
 	font-family:helvetica;
@@ -9,14 +10,11 @@ h1 {
 #header {
 	position:absolute;
 	top:0;
-	left:0;
-	right:0;
 	width:900px;
 	height:100px;
-	margin-right:auto;
-	margin-left:auto;
-	padding-left:3em;
-	
+	margin-left:10%;
+	margin-right:5%;
+	padding-left:3em;	
 }
 #header img{
 	float:left;
@@ -29,7 +27,7 @@ h1 {
 	height:90px;
 	float:right;
 	margin-top:15px;
-	margin-right:5em;
+	margin-right:6em;
 	padding:5px;
 	background-color:#2A211C;
 }
@@ -56,6 +54,8 @@ h1 {
 #info_bar {
 	position:absolute;
 	margin-top:100px;
+	margin-left:10%;
+	margin-right:5%;
 	height:25px;
 }
 
@@ -66,10 +66,8 @@ h1 {
 	width:900px;
 	height:700px;
 	margin-top:100px;
-	margin-left:auto;
-	margin-right:auto;
-	left:0;
-	right:0;
+	margin-left:10%;
+	margin-right:5%
 }
 #center {
 	margin-top:3em;

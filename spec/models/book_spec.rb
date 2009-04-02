@@ -7,6 +7,13 @@ describe "create a new book" do
     @book.should be_valid
   end
 
+  it "should not allow two books with the same isbn number" do
+    @book1 = Factory(:book, :isbn => '12345678910')
+    @book2 = Factory.build(:book, :isbn => '12345678910')
+    @book2.should_not be_valid
+    @book2.errors[:isbn].should eql("this book already exists")
+  end
+
 end
 
 describe "find how many copies of this book are for sale" do

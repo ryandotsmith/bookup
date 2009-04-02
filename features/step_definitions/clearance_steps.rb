@@ -4,6 +4,11 @@ Then /^I should see error messages$/ do
   Then %{I should see "error(s)? prohibited"}
 end
 
+Given /^I am signed in$/ do
+  And %{I am signed up and confirmed as "email@person.com/password"}
+	And %{I sign in as "email@person.com/password"}
+end
+
 # Database
 
 Given /^no user exists with an email of "(.*)"$/ do |email|

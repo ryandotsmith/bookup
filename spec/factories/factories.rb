@@ -1,13 +1,17 @@
+Factory.sequence :isbn do |n|
+  "user#{n}@example.com"
+end
+
 Factory.define :book do |b|
-  b.title "Introduction to Logic"
-  b.isbn "12345678910"
-  b.description "This book is tip top shape"
+  b.title         { "Introduction to Logic" }
+  b.isbn          { Factory.next :isbn }
+  b.description   { "This book is tip top shape" }
 end
 
 Factory.define :listing do |l|
   l.association :book, :factory => :book
   l.association :user, :factory => :user
-  l.market_status '1'
+  l.market_status 1
 end
 
 Factory.sequence :email do |n|

@@ -4,7 +4,16 @@ class ListingsController < ApplicationController
   before_filter :load_book
   
   def index
-    @listings = Listing.find(:all)
+    if params[:book_id]
+      @listings = @book.listings
+      @listings_type = :book
+    elsif params[:user_id]
+      @listings = @user.listings
+      @listings_type = :user
+    else
+      @listings = Listing.find(:all) unless @book
+      @listings_type = :all
+    end
   end#index
 
   def show
@@ -20,7 +29,14 @@ class ListingsController < ApplicationController
     @listing.book = @book
     redirect_to @book if @listing.save
   end#create
-
+  
+  def edit
+    @listing = Listing.find( params[:id] )
+  end#edit
+  def update
+    @listing = Listing.find( params[:id] )
+    redirect_to user_listings_url(@user) if @listing.update_attributes(params[:listing])
+  end#update
 protected 
   ####################
   #load_user
@@ -30,6 +46,6 @@ protected
   ####################
   #load_book
   def load_book
-    @book = Book.find( params[:book_id] )
+    @book = Book.find( params[:book_id] ) if params[:book_id]
   end#load_book
 end

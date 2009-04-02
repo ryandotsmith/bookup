@@ -1,0 +1,7 @@
+<div id="center">
+	<% form_for([@user,@listing]) do |f|%>
+		<% i = -2 %>
+		<%= f.select :market_status, ['available','pending','sold'] %>
+		<%= f.submit 'update'%>
+	<% end %>
+</div><!--end center-->

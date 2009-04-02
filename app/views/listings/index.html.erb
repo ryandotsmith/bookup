@@ -1,5 +1,11 @@
 <div id="center">
-	<% @listings.each do |listing|%>
-		<%= listing.comment %>
-	<% end %>	
+	<% case @listings_type.to_sym 
+	 when :user %>
+		<%= render :partial => 'user_listings', :locals => { :listings => @listings }%>
+	<% when :book %>
+		<%= render :partial => 'book_listings', :locals => { :listings => @listings }%>
+	<% when :all %>
+	<% else %>
+		<%= render :partial => 'all_listings', :locals => { :listings => @listings }%>
+	<% end %>
 </div><!--end center-->

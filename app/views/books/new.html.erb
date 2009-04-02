@@ -1,4 +1,5 @@
 <div id="center">
+	<%= error_message_on @book, :isbn %>
 	<% form_for(@book) do |f| %>
 		  <li><%= f.label :title %></li>
 	    <li><%= f.text_field :title %></li>
