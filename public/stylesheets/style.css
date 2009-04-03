@@ -111,7 +111,8 @@ h3 a:hover {
 	top:0;
 	width:400px;
 	min-height:300px;
-	background-color:grey;
+	background-color:#96BBBB;
 	margin-top:10px;
 	margin-left:25%;
+	padding:10px;
 }
