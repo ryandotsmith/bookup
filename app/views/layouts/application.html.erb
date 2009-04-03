@@ -14,25 +14,13 @@
 	<% end%>
 </head>
 
-<body>
-	<h1 style='color:#CCD617;text-align:center;'>
-		This application is under development. Data will be <u>deleted</u> periodically. 
-	</h1>
-	<p style="width:300px;color:#812D0B;padding-left:13%;">
-		The awesome people at Heroku.com are working on getting this site email access. 
-		Once we have email, you can create an account and begin to share text books!
-		<br />
-		<br />
-		If you have any questions, please email me: this.ryansmith [at] gmail dot com.
-	</p>
-		 
+<body>		 
 	<div id="header">
 		<%= link_to image_tag("bookup_logo.png"), root_url %>
-		<div id="user_bar">
-			<%= render :partial => '/sessions/session_bar'%>
-		</div><!--end user_bar-->
+		<%= render :partial => '/sessions/session_bar'%>
 	</div><!--end header-->
 	<div id="info_bar">
+		<p>beta</p>
 		<%= flash[:notice]  %>
 		<%= flash[:failure] %>
 		<%= flash[:success] %>		

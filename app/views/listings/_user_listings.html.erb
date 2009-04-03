@@ -1,8 +1,9 @@
-<table>
+<table id='show_book_listings_table' class='tablesorter'>
 <thead>
   <tr>
-  <th></th>
-  <th></th>  
+  <th>Date Listed</th>
+  <th>Listing Comment</th>  
+	<th>Update listing</th>
   </tr>
 </thead>
 <tbdoy>
@@ -10,7 +11,7 @@
   <tr>
     <td><%= listing.created_at.to_s %></td>
     <td><%= listing.comment %></td>
-    <td><%= link_to "mark as sold" %></td>  
+    <td><%= link_to "update",edit_user_listing_url(listing.user.id,listing.id) %></td>  
   </tr>
 	<% end %>			
 

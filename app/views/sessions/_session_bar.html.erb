@@ -2,9 +2,16 @@
 <ul>
 <% if logged_in? %>
 
-	<li> <%= current_user.email %> </li>
+	<li> 
+		<%= current_user.email %> 
+	</li>
+	
+	<li> 
+		<%= link_to "your listings ( #{ current_user.listings.count } )",user_listings_path(current_user)%>
+	</li>
+	
 	<li>
-	<%= link_to "sign out", { :controller 	=> 'sessions', 
+		<%= link_to "sign out", { :controller 	=> 'sessions', 
 													 	:action 			=> 'destroy'}, 
 														:method => :delete    %>
 	</li>
@@ -14,5 +21,6 @@
 												 		:action 			=> 'new' } %>
 	</li>
 <% end %>
+
 </ul>
 </div><!--end session_bar-->

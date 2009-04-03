@@ -1,4 +1,5 @@
 <div id="center">
+	<h1> Update listing for <%= @listing.book.title %></h1>
 	<% form_for([@user,@listing]) do |f|%>
 		<% i = -2 %>
 		<%= f.select :market_status, ['available','pending','sold'] %>

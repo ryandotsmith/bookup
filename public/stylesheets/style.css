@@ -9,11 +9,33 @@ h1 {
 	font-size:18pt;
 	color:#363636;
 }
+h1 a{
+	font-size:18pt;
+	color:#363636;
+}
+
+h2 {
+	font-size:12pt;
+	color:#363636;
+}
+h3 {
+	font-size:12pt;
+	color:#363636;
+}
+h3 a {
+	color:#363636;
+	text-decoration:none;
+}
+h3 a:hover {
+	color:green;
+	border-bottom:1px solid yellow;
+}
+
 #header {
 	position:absolute;
 	margin-top:0;
 	width:900px;
-	height:100px;
+	height:110px;
 	margin-left:10%;
 	margin-right:5%;
 	padding-left:3em;	
@@ -24,42 +46,51 @@ h1 {
 }
 
 
-#user_bar {
+#session_bar {
 	width:300px;
-	height:90px;
+	height:100px;
 	float:right;
 	margin-top:15px;
 	margin-right:6em;
-	padding:5px;
+	padding-left:5px;
 	background-color:#2A211C;
 }
-#user_bar ul {
+#session_bar ul {
+	height:80px;
+	width:90%;
+	font-size:12pt;
 	list-style:none;
+	margin-top:5px;
+	margin-left:0;
 	padding-left:0;
+	background-color:#2A211C;
 }
-#user_bar li {
+#session_bar li {
+	text-align:left;
 	color:white;
 }
-#user_bar li a {
+#session_bar li a {
 	font:arial;
-	font-size:14pt;
 	color:white;
 	text-decoration:none;
 }
-#user_bar li a:hover {
+#session_bar li a:hover {
 	font:arial;
-	font-size:14pt;
 	color:yellow;
 	text-decoration:none;
 }
 
 #info_bar {
+	color:#FFFFE3;
 	position:absolute;
-	margin-top:100px;
-	margin-left:10%;
+	margin-top:80px;
+	margin-left:13%;
 	margin-right:5%;
-	height:25px;
+	height:40px;
+	width:480px;
+	padding-left:5px;
 }
+
 
 #container {
 	position:absolute;
@@ -67,11 +98,20 @@ h1 {
 	background-repeat:no-repeat;
 	width:900px;
 	height:700px;
-	margin-top:100px;
+	margin-top:110px;
 	margin-left:10%;
 	margin-right:5%
 }
 #center {
 	margin-top:3em;
 	margin-left:3em;
+}
+#waiting_divs {
+	position:absolute;
+	top:0;
+	width:400px;
+	min-height:300px;
+	background-color:grey;
+	margin-top:10px;
+	margin-left:25%;
 }

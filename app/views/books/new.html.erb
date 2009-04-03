@@ -1,13 +1,14 @@
 <div id="center">
+<ul class='form'>
 	<%= error_message_on @book, :isbn %>
-	<% form_for(@book) do |f| %>
+	<% form_for @book , :html => {:class => 'new_book_form'} do |f| %>
 		  <li><%= f.label :title %></li>
 	    <li><%= f.text_field :title %></li>
 		  <li><%= f.label :isbn %></li>
 	    <li><%= f.text_field :isbn %></li>
-		  <li><%= f.label :description %></li>
-			<li><%= f.text_field :description %></li>
+		  <li><%= f.label :edition %></li>
+			<li><%= f.select :edition, (1..20).map {|i| i.ordinalize } %></li>
 	    <li><%= f.submit "submit" %></li>
 	<% end %>	
-	
+</ul>	
 </div><!--end center-->
