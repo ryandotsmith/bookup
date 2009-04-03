@@ -13,6 +13,16 @@ config.cache_classes = true
 # Full error reports are disabled and caching is turned on
 config.action_controller.consider_all_requests_local = false
 config.action_controller.perform_caching             = true
+config.action_mailer.smtp_settings = {
+  :address        => "mail.authsmtp.com",
+  :port           => 25,
+  :authentication => :login,
+  :tls            => false,
+  :domain         => "bookup.org",
+  :user_name      => "ac40809",
+  :password       => "ygnb5unza" 
+}
+
 
 # Use a different cache store in production
 # config.cache_store = :mem_cache_store
