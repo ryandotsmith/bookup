@@ -21,7 +21,25 @@ describe "find how many copies of this book are for sale" do
   it "should return the number of listings marked 'for sale' " do
     @book = Factory(:book)
     @user = Factory(:email_confirmed_user, :email => "james_brown@gmail.com")
-    @user.listings.create(:book_id => @book.id)
+    @user.listings << Factory(:listing, :book => @book, :user => @user, :price => 1.99 )
     @book.get_all_for_sale.length.should == 1
+  end
+end
+
+describe "finding the average price of a book" do
+
+  it "should find all listings and then compute the avg" do
+    @user = Factory(:email_confirmed_user)
+    @book = Factory(:book)
+    4.times do |i|
+      @user.listings << Factory(:listing, :book => @book, :user => @user, :price => i+1 )
+    end
+    @book.average_price().should eql(2.5)
+  end
+  it "should return 0.0 when there are no listings for a book" do
+    @user = Factory(:email_confirmed_user)
+    @book = Factory(:book)
+    @book.listings.count.should eql(0)
+    @book.average_price().should eql(0.0)
   end
 end

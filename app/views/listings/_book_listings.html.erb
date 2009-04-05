@@ -1,16 +1,18 @@
 <table id='show_book_listings_table' class='tablesorter'>
 <thead>
   <tr>
-	  <th>status</th>
-	  <th>listing date</th>  
-	  <th>email</th>
-	  <th>comments</th>
+	  <th>Status</th>
+		<th>Price</th>
+	  <th>Listing Date</th>  
+	  <th>Email</th>
+	  <th>Comments</th>
   </tr>
 </thead>
 <tbdoy>
 	<% book.listings.each do |listing|%>
   <tr>
     <td><%= get_market_status( listing )%></td>  
+		<td><%= "$" + listing.price.to_s %></td>  
     <td><%= listing.created_at.to_s %></td>  
     <td><%= listing.user.email + " " + clippy(listing.user.email.to_s)  %> </td>  
     <td><%= listing.comment %></td>

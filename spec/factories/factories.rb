@@ -1,5 +1,7 @@
 Factory.sequence :isbn do |n|
-  "user#{n}@example.com"
+  isbn = "#{n}"
+  9.times {|i| isbn <<"#{rand(10)}"} 
+  isbn.to_i
 end
 
 Factory.define :book do |b|

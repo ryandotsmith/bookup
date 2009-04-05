@@ -7,6 +7,7 @@
 			<th>Edition</th>
 			<th>ISBN</th>
 			<th>Copies For Sale</th>
+			<th>Average Price</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -16,6 +17,7 @@
 		<td><%= book.edition.to_i.ordinalize %></td>
 		<td><%= book.isbn %></td>
 		<td><%= book.listings.count %></td>
+		<td><%= "$" + book.average_price().to_s%></td>
 	</tr>
 	<% end %>
 	</tbody>
