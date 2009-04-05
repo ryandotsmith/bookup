@@ -17,7 +17,7 @@ module NavigationHelpers
     when /add new book page/
       new_book_path
     when /add new listing page/
-      new_book_listing_path
+      new_book_listing_path      
     else
       raise "Can't find mapping from \"#{page_name}\" to a path."
     end

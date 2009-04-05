@@ -7,13 +7,13 @@
 	</li>
 	
 	<li> 
-		<%= link_to "your listings ( #{ current_user.listings.count } )",user_listings_path(current_user)%>
+		<%= link_to "your listings ( #{ current_user.get_active_listings.length } )",user_listings_path(current_user)%>
 	</li>
 	
 	<li>
 		<%= link_to "sign out", { :controller 	=> 'sessions', 
-													 	:action 			=> 'destroy'}, 
-														:method => :delete    %>
+													 		:action 			=> 'destroy'}, 
+															:method 			=> :delete    %>
 	</li>
 <% else %>
 	<li>

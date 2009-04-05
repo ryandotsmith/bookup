@@ -1,8 +1,9 @@
 class Book < ActiveRecord::Base
   has_many :listings
   has_many :users, :through => :listings
-  
+  validates_presence_of :isbn
   validates_uniqueness_of :isbn, :message => "this book already exists"
+
   ####################
   # note that market_status == 1 => listing is available 
   def get_all_for_sale

@@ -35,6 +35,7 @@ class ListingsController < ApplicationController
   end#edit
   def update
     @listing = Listing.find( params[:id] )
+    flash[:notice] = "listing was successfully updated"
     redirect_to user_listings_url(@user) if @listing.update_attributes(params[:listing])
   end#update
 protected 

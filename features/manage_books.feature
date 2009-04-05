@@ -10,6 +10,8 @@ Feature: Adding a new book
 		Then I should see a link to add a book to the list
 		When I go to add new book page
 		And I fill in "title" with "a new unseen book"
+		And I select "1st" from "edition"
+		And I fill in "isbn" with "12345678910"
 		And I press "submit"
 		Then I should see "a new unseen book" 
 
@@ -20,4 +22,12 @@ Feature: Adding a new book
 		When I go to add new book page
 		And I fill in "isbn" with "123456789"
 		And I press "submit"
-		Then I should see "this book already exists" 
+		Then I should see "this book already exists"
+		
+	Scenario: I try to add a book without an ISBN number
+		Given I am signed in
+		When I navigate to the add new book page 
+		And I fill in "title" with "a book with no isbn"
+		And I press "submit"
+		Then I should see "invalid"
+		

@@ -5,13 +5,14 @@ end
 Factory.define :book do |b|
   b.title         { "Introduction to Logic" }
   b.isbn          { Factory.next :isbn }
-  b.description   { "This book is tip top shape" }
+  b.edition       { "12th" }
 end
 
 Factory.define :listing do |l|
   l.association :book, :factory => :book
   l.association :user, :factory => :user
   l.market_status 1
+  l.price 0.01
 end
 
 Factory.sequence :email do |n|
