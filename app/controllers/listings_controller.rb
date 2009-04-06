@@ -27,7 +27,11 @@ class ListingsController < ApplicationController
   def create
     @listing = @user.listings.build( params[:listing] )
     @listing.book = @book
-    redirect_to @book if @listing.save
+    if @listing.save
+      redirect_to @book
+    else
+      render :action => 'new'
+    end
   end#create
   
   def edit
