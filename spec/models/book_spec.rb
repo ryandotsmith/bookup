@@ -42,4 +42,18 @@ describe "finding the average price of a book" do
     @book.listings.count.should eql(0)
     @book.average_price().should eql(0.0)
   end
+  it "should find the average price of all books" do
+    @user = Factory(:email_confirmed_user)
+    @book1 = Factory(:book)
+    @book2 = Factory(:book)
+    4.times do |i|
+      @user.listings << Factory(:listing, :book => @book1, :user => @user, :price => 4)
+    end
+    4.times do |i|
+      @user.listings << Factory(:listing, :book => @book2, :user => @user, :price => 10)
+    end
+    Book.average_price().should eql(7.00)
+  end
+
+
 end

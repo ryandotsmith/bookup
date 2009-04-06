@@ -9,7 +9,18 @@ class Book < ActiveRecord::Base
   def get_all_for_sale
     Listing.find_all_by_market_status( 1 , :include => :user )
   end#get_all_for_sale
-
+  ####################
+  #self.average_price()
+  def self.average_price()
+    sum = 0.0
+    n   = 0    
+    Book.find(:all).each do |book|
+      sum += book.average_price()
+      n += 1
+    end
+    return(sum/n) if n != 0
+    n.to_f
+  end#self.average_price()
   ####################
   #average_price() if there are no listings return 0.0
   def average_price()
