@@ -60,7 +60,8 @@ class Book < ActiveRecord::Base
     sum = 0.0
     n   = 0    
     Book.find(:all).each do |book|
-      sum += book.average_price() 
+      next if book.average_price() == 0.0
+      sum += book.average_price()
       n += 1
     end
     return(sum/n) if n != 0
