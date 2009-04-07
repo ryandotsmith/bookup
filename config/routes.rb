@@ -5,4 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
   map.resources :passwords
   map.resources :books, :has_many => [:listings]
+  map.lookup '/books/lookup',
+    :controller =>  'books',
+    :action     =>  'lookup'
 end

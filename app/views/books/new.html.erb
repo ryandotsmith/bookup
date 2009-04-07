@@ -2,13 +2,18 @@
 <ul class='form'>
 	<%= error_message_on @book, :isbn %>
 	<% form_for @book , :html => {:class => 'new_book_form'} do |f| %>
-		  <li><%= f.label :title %></li>
-	    <li><%= f.text_field :title %></li>
-		  <li><%= f.label :isbn %></li>
-	    <li><%= f.text_field :isbn %></li>
-		  <li><%= f.label :edition %></li>
-			<li><%= f.select :edition, (1..20).map {|i| i.ordinalize } %></li>
+		  <li>ISBN</li>
+	    <li><%= f.text_field :isbn %> <%= image_tag("spinner.gif", :id => 'spinner', :style => "display:none")%></li>
+			<li><div id="suggestion"></div><!--end suggestion--></li>
 	    <li><%= f.submit "submit" %></li>
 	<% end %>	
 </ul>	
+
+<%= observe_field "book_isbn", :url => 	{ :controller => 'books', :action => 'lookup' },
+													:frequency 	=> 0.25,
+													:loading		=> "$('#spinner').appear();",
+													:complete		=> "$('#spinner').fade();",
+													:update			=> 	:suggestion,
+													:with				=>	'isbn' %>
+
 </div><!--end center-->

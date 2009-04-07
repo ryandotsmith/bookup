@@ -8,12 +8,29 @@ describe "create a new book" do
   end
 
   it "should not allow two books with the same isbn number" do
-    @book1 = Factory(:book, :isbn => '12345678910')
-    @book2 = Factory.build(:book, :isbn => '12345678910')
+    @book1 = Factory(:book, :isbn => '0131898345')
+    @book2 = Factory.build(:book, :isbn => '0131898345')
     @book2.should_not be_valid
     @book2.errors[:isbn].should eql("this book already exists")
   end
+  describe "generating book info from an isbn number" do
 
+    it "should validate and hyphenate the ISBN number" do
+      @book1 = Factory.build(:book, :isbn => "0131898345")
+      @book1.scrub_isbn
+      @book1.isbn.should eql("0-13-189834-5")
+    end
+
+    it "should populate attributes with amazon data" do
+      @book1 = Factory.build(:book, :isbn => "0131898345")
+      @book1.fetch_attrs_from_amazon()
+      @book1.title.should eql("Introduction to Logic")
+      @book1.edition.should eql("12th")
+      @book1.authors.should eql(["Irving M. Copi", "Carl Cohen"])
+      @book1.list_price.should eql( @book1.list_price )
+      @book1.img_url.should eql( @book1.img_url )
+    end
+  end
 end
 
 describe "find how many copies of this book are for sale" do

@@ -7,7 +7,7 @@ Feature: Manage listings for books
 		Given I am signed in
 		And I am on the books index page
 		And the book I have exists
-		And the book has the isbn "123456789"
+		And the book has the isbn "0-13-189834-5"
 		When I navigate to my books show page
 		Then I should see "sell your copy" 
 		When I navigate to the new listing page

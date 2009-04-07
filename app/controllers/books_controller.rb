@@ -14,6 +14,7 @@ class BooksController < ApplicationController
 
   def create
     @book = @user.books.build( params[:book] )
+    @book.fetch_attrs_from_amazon()
     respond_to do |format|
       if @book.save
         flash[:notice] = 'Book was successfully added to list'
@@ -27,7 +28,18 @@ class BooksController < ApplicationController
   def show
     @book = Book.find( params[:id] )
   end#method_name
-  
+
+  def lookup
+    isbn = params[:isbn]
+    @book = Book.new(:isbn => isbn)
+    if @book.scrub_isbn()
+      @book.fetch_attrs_from_amazon()
+      render :text => "#{@book.title}"
+    else
+      render :text => "could not find book with that ISBN"
+    end
+  end#lookup
+
 protected
   
   def load_user

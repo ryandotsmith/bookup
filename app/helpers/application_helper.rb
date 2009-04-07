@@ -19,7 +19,8 @@ module ApplicationHelper
         'jquery-ui.min.js',
           'jquery.corner.js',
             'application.js',
-              'jquery.tablesorter.min.js']
+              'jquery.tablesorter.min.js',
+                'jrails']
   end#get_js
   def clippy(text, bgcolor='#FFFFFF')
     html = <<-EOF

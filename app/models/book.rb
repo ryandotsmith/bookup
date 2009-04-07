@@ -5,6 +5,42 @@ class Book < ActiveRecord::Base
   validates_uniqueness_of :isbn, :message => "this book already exists"
   validates_numericality_of :isbn, :greater_than_or_equal_to => 10
   ####################
+  #edition
+  def edition
+    if read_attribute(:edition) == nil
+      return "nil"
+    else
+      read_attribute(:edition).to_i.ordinalize
+    end
+  end#edition
+  ####################
+  #scrub_isbn()
+  def scrub_isbn()
+    if ISBN_Tools.is_valid?(self.isbn)
+      ISBN_Tools.hyphenate!(self.isbn)
+    end    
+  end#scrub_isbn()
+  ####################
+  #fetch_attrs_from_amazon()
+  def fetch_attrs_from_amazon()
+    isbn_number = ISBN_Tools.cleanup(self.isbn)
+    lookup = AmazonProducts::Lookup.new( isbn_number, 'ISBN')
+    result = lookup.execute
+    self.title   = result.title if result.attribute_names.include? 'title'
+    self.edition = result.edition if result.attribute_names.include? 'edition'
+    self.authors = result.authors if result.attribute_names.include? 'authors'
+    require "rubygems"; require "ruby-debug"; debugger 
+    self.list_price = result.list_price if result.attribute_names.include? 'list_price'
+    self.img_url    = result.medium_image.url if result.attribute_names.include? 'medium_image'
+  end#fetch_attrs_from_amazon()
+  ####################
+  #img_url()
+  def img_url()
+    lookup = AmazonProducts::Lookup.new( self.isbn.to_s, 'ISBN')
+    result = lookup.execute
+    result.medium_image.url
+  end#img_url()
+  ####################
   # note that market_status == 1 => listing is available 
   def get_all_for_sale
     Listing.find_all_by_market_status( 1 , :include => :user )

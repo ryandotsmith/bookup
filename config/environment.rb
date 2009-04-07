@@ -16,6 +16,7 @@ Rails::Initializer.run do |config|
     :secret      => '81db85d13a95fd4441145739a8760b073aaf422f2db4dcd99d4f78514f8e55849a58d61b8558c6327ff4aacafc0d78c302e9f3dc3b7839a44ca8615af121760b'
   }
 
+    require 'isbn/tools'
     config.gem "thoughtbot-factory_girl",
                :lib    => "factory_girl",
                :source => "http://gems.github.com",
@@ -27,5 +28,6 @@ Rails::Initializer.run do |config|
                :version => '0.5.3'
 
 end
+AmazonProducts.config_location = 'config/amazon.yml'
 ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.merge!(:default => '%m/%d/%Y')
 ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:default => '%m/%d/%Y')
