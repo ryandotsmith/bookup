@@ -9,7 +9,7 @@ Feature: Adding a new book
 		And my books is not on the list 
 		Then I should see a link to add a book to the list
 		When I go to add new book page
-		And I fill in "isbn" with "0131898345"
+		And I fill in "book_isbn" with "0131898345"
 		And I press "submit"
 		Then I should see "Introduction to Logic" 
 

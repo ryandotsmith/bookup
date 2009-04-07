@@ -20,6 +20,7 @@ class BooksController < ApplicationController
         flash[:notice] = 'Book was successfully added to list'
         format.html { redirect_to books_path }
       else
+        flash[:notice] = 'Book was not added.'
         format.html { render :action => "new" }
       end
     end

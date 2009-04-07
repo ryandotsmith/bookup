@@ -3,15 +3,14 @@ class Book < ActiveRecord::Base
   has_many :users, :through => :listings
   validates_presence_of :isbn
   validates_uniqueness_of :isbn, :message => "this book already exists"
-  validates_numericality_of :isbn, :greater_than_or_equal_to => 10
 
   ####################
   #edition
   def edition
     if read_attribute(:edition) == nil or read_attribute(:edition) == ""
-      return "nil"
+      return ""
     else
-      read_attribute(:edition).to_i.ordinalize
+      read_attribute(:edition).to_i.ordinalize.to_s 
     end
   end#edition
   ####################
@@ -36,19 +35,12 @@ class Book < ActiveRecord::Base
     isbn_number = ISBN_Tools.cleanup(self.isbn)
     lookup = AmazonProducts::Lookup.new( isbn_number, 'ISBN')
     result = lookup.execute
-    self.title   = result.title if result.attribute_names.include? 'title'
-    self.edition = result.edition if result.attribute_names.include? 'edition'
-    self.authors = result.authors if result.attribute_names.include? 'authors'
-    self.list_price = result.item_attributes.list_price.formatted_price.to_s if result.attribute_names.include? 'list_price'
-    self.img_url    = result.medium_image.url if result.attribute_names.include? 'medium_image'
+    self.title      = result.title
+    self.edition    = result.edition
+    self.authors    = result.authors
+    self.list_price = result.list_price_usd
+    self.img_url    = result.medium_image.url
   end#fetch_attrs_from_amazon()
-  ####################
-  #img_url()
-  def img_url()
-    lookup = AmazonProducts::Lookup.new( self.isbn.to_s, 'ISBN')
-    result = lookup.execute
-    result.medium_image.url
-  end#img_url()
   ####################
   # note that market_status == 1 => listing is available 
   def get_all_for_sale

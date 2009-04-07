@@ -128,4 +128,15 @@ h3 a:hover {
 		font-size:20pt;
 		margin:5px;
 }
-
+#notice {
+	width:450px;
+	height:50px;
+	background:#C5656B;
+	font-family:helvetica;
+	margin-top:2em;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:1em;
+	padding:2px;
+	
+}
