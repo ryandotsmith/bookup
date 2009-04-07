@@ -4,33 +4,42 @@ class Book < ActiveRecord::Base
   validates_presence_of :isbn
   validates_uniqueness_of :isbn, :message => "this book already exists"
   validates_numericality_of :isbn, :greater_than_or_equal_to => 10
+
   ####################
   #edition
   def edition
-    if read_attribute(:edition) == nil
+    if read_attribute(:edition) == nil or read_attribute(:edition) == ""
       return "nil"
     else
       read_attribute(:edition).to_i.ordinalize
     end
   end#edition
   ####################
+  #to_10!
+  def to_10!
+    if self.isbn.include?("978")
+      self.isbn = ISBN_Tools.isbn13_to_isbn10(self.isbn)
+    end    
+  end#to_10!
+  ####################
   #scrub_isbn()
   def scrub_isbn()
     if ISBN_Tools.is_valid?(self.isbn)
+      self.to_10!
       ISBN_Tools.hyphenate!(self.isbn)
     end    
   end#scrub_isbn()
   ####################
   #fetch_attrs_from_amazon()
   def fetch_attrs_from_amazon()
+    self.to_10!
     isbn_number = ISBN_Tools.cleanup(self.isbn)
     lookup = AmazonProducts::Lookup.new( isbn_number, 'ISBN')
     result = lookup.execute
     self.title   = result.title if result.attribute_names.include? 'title'
     self.edition = result.edition if result.attribute_names.include? 'edition'
     self.authors = result.authors if result.attribute_names.include? 'authors'
-    require "rubygems"; require "ruby-debug"; debugger 
-    self.list_price = result.list_price if result.attribute_names.include? 'list_price'
+    self.list_price = result.item_attributes.list_price.formatted_price.to_s if result.attribute_names.include? 'list_price'
     self.img_url    = result.medium_image.url if result.attribute_names.include? 'medium_image'
   end#fetch_attrs_from_amazon()
   ####################
@@ -51,7 +60,7 @@ class Book < ActiveRecord::Base
     sum = 0.0
     n   = 0    
     Book.find(:all).each do |book|
-      sum += book.average_price()
+      sum += book.average_price() 
       n += 1
     end
     return(sum/n) if n != 0

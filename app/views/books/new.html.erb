@@ -2,8 +2,12 @@
 <ul class='form'>
 	<%= error_message_on @book, :isbn %>
 	<% form_for @book , :html => {:class => 'new_book_form'} do |f| %>
+			<p style='font-size:12pt;color:#2A211C;width:400px'>
+				Enter the ISBN number of the book you wish to add. Wait for the title of the supposed book
+				to show above the submit button. If this is indeed to book you wish to add, press submit.
+			</p>
 		  <li>ISBN</li>
-	    <li><%= f.text_field :isbn %> <%= image_tag("spinner.gif", :id => 'spinner', :style => "display:none")%></li>
+	    <li><%= f.text_field :isbn, :autocomplete => 'off' %> <%= image_tag("spinner.gif", :id => 'spinner', :style => "display:none")%></li>
 			<li><div id="suggestion"></div><!--end suggestion--></li>
 	    <li><%= f.submit "submit" %></li>
 	<% end %>	
