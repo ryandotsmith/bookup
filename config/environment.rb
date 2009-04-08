@@ -17,7 +17,7 @@ Rails::Initializer.run do |config|
   }
 
     require 'isbn/tools'
-
+    require 'amazon_products'
     config.gem 'rubaidh-google_analytics', 
               :lib => 'rubaidh/google_analytics', 
               :source => 'http://gems.github.com'
