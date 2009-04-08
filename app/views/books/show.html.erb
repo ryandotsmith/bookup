@@ -1,9 +1,14 @@
 <div id="center">
+	<div id="image" style='float:right'>
+		<%= image_tag("#{ @book.img_url }")%>
+	</div><!--end image-->
 	<h1><%=  @book.title %></h1>
 	<h2>
-		<a><%= @book.edition.to_i.ordinalize %> edition</a>
+		<a><%= @book.edition %> <%= "edition" if @book.edition.length > 1 %></a>
 		<br />
 		<a>ISBN: <%= @book.isbn %></a>  
+		<br />
+		<a>Amazon List Price: <%= @book.list_price %></a>
 	</h2>
 	<h3>
 		People selling this book:

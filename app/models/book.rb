@@ -1,9 +1,56 @@
 class Book < ActiveRecord::Base
   has_many :listings
   has_many :users, :through => :listings
+  has_many :active_listings, :class_name => "Listing", :conditions => { :market_status => 1 }
   validates_presence_of :isbn
   validates_uniqueness_of :isbn, :message => "this book already exists"
-  validates_numericality_of :isbn, :greater_than_or_equal_to => 10
+  validate :valid_isbn
+  ####################
+  #valid_isbn
+  def valid_isbn
+    errors.add(:isbn, "This is not a valid ISBN.") unless ISBN_Tools.is_valid?(self.isbn)  
+  end#valid_isbn
+  ####################
+  #edition
+  def edition
+    if read_attribute(:edition) == nil or read_attribute(:edition) == ""
+      return ""
+    else
+      read_attribute(:edition).to_i.ordinalize.to_s 
+    end
+  end#edition
+  ####################
+  #to_10!
+  def to_10!
+    if self.isbn.include?("978")
+      self.isbn = ISBN_Tools.isbn13_to_isbn10(self.isbn)
+    end    
+  end#to_10!
+  ####################
+  #scrub_isbn()
+  def scrub_isbn()
+    if ISBN_Tools.is_valid?(self.isbn)
+      self.to_10!
+      ISBN_Tools.hyphenate!(self.isbn)
+    end    
+  end#scrub_isbn()
+  ####################
+  #fetch_attrs_from_amazon()
+  def fetch_attrs_from_amazon()
+    begin
+      self.to_10!
+      isbn_number = ISBN_Tools.cleanup(self.isbn)
+      lookup = AmazonProducts::Lookup.new( isbn_number, 'ISBN')
+      result = lookup.execute
+      self.title      = result.title
+      self.edition    = result.edition
+      self.authors    = result.authors
+      self.list_price = result.list_price_usd
+      self.img_url    = result.medium_image.url
+    rescue
+      false
+    end
+  end#fetch_attrs_from_amazon()
   ####################
   # note that market_status == 1 => listing is available 
   def get_all_for_sale

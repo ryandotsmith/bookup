@@ -6,7 +6,7 @@ end
 
 Factory.define :book do |b|
   b.title         { "Introduction to Logic" }
-  b.isbn          { Factory.next :isbn }
+  b.isbn          { '0131898345' }
   b.edition       { "12th" }
 end
 

@@ -3,6 +3,7 @@ class CreateListings < ActiveRecord::Migration
     create_table :listings do |t|
       t.belongs_to :book
       t.belongs_to :user
+
       t.integer :market_status, :default => 1
       t.string :comment
       t.timestamps

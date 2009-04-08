@@ -19,8 +19,18 @@ module ApplicationHelper
         'jquery-ui.min.js',
           'jquery.corner.js',
             'application.js',
-              'jquery.tablesorter.min.js']
+              'jquery.tablesorter.min.js',
+                'jrails']
   end#get_js
+
+  ####################
+  #scribble( attr )
+  def scribble( attr )
+   user =  attr.scan(/^([^@]+)(@.*)$/).flatten.first
+   domain = attr.scan(/^([^@]+)(@.*)$/).flatten.second
+   user[0..1] + "..." + user[-1..-1] + domain
+  end#scribble( attr )
+
   def clippy(text, bgcolor='#FFFFFF')
     html = <<-EOF
       <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"

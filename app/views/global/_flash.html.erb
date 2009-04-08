@@ -1,0 +1,17 @@
+<% if flash[:notice] %>
+	<div id="flash_notice">
+		<%=flash[:notice]%>
+	</div><!--end notice-->
+<% end %>
+
+<% if flash[:failure] %>
+	<div id="flash_failure">
+		<%= flash[:failure] %>
+	</div><!--end notice-->
+<% end %>
+
+<% if flash[:success] %>
+	<div id="flash_success">
+		<%= flash[:success] %>
+	</div><!--end notice-->
+<% end %>

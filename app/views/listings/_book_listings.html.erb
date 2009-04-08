@@ -14,7 +14,11 @@
     <td><%= get_market_status( listing )%></td>  
 		<td><%= "$" + listing.price.to_s %></td>  
     <td><%= listing.created_at.to_s %></td>  
-    <td><%= listing.user.email + " " + clippy(listing.user.email.to_s)  %> </td>  
+		<% if logged_in? %>
+		<td><%= listing.user.email %></td>
+		<% else %>
+		<td><%= link_to "#{scribble listing.user.email}", new_session_path %></td>
+		<% end %>
     <td><%= listing.comment %></td>
   </tr>
 <% end %>
