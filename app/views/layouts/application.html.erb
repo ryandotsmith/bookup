@@ -22,14 +22,9 @@
 	<div id="info_bar">
 		<p style='margin-top:10px;'><%= link_to_function "This is a beta release. Click this before using.",
 				"$('#waiting_divs').toggle();",:style => 'color:white'	%></p>
-		<%= flash[:failure] %>
-		<%= flash[:success] %>		
 	</div><!--end info_bar-->
 	<div id="container">
-		<div id="notice">
-			<%= flash[:notice]  %>			
-		</div><!--end notice-->
-
+		<%= render :partial => 'global/flash', :locals => { :flash => flash }%>
 		<%= yield  %>		
 		<div id="waiting_divs" style='display:none'>
 			<div id="beta_warning">

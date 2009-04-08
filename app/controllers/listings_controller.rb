@@ -28,6 +28,7 @@ class ListingsController < ApplicationController
     @listing = @user.listings.build( params[:listing] )
     @listing.book = @book
     if @listing.save
+      flash[:success] = "listing was successfully created"
       redirect_to @book
     else
       render :action => 'new'
@@ -37,11 +38,19 @@ class ListingsController < ApplicationController
   def edit
     @listing = Listing.find( params[:id] )
   end#edit
+
   def update
     @listing = Listing.find( params[:id] )
-    flash[:notice] = "listing was successfully updated"
-    redirect_to user_listings_url(@user) if @listing.update_attributes(params[:listing])
+    if @listing.update_attributes(params[:listing])
+      @listing.update_market_status( params[:listing][:market_status] )
+      flash[:success] = "listing was successfully updated"
+      redirect_to user_listings_url(@user)
+    else
+      render :action => 'edit'
+    end
   end#update
+
+
 protected 
   ####################
   #load_user

@@ -18,7 +18,7 @@ module Clearance
             @user = User.authenticate(params[:session][:email],
                                       params[:session][:password])
             if @user.nil?
-              flash.now[:notice] = "Bad email or password."
+              flash.now[:failure] = "Bad email or password."
               render :action => :new, :status => :unauthorized
             else
               if @user.email_confirmed?

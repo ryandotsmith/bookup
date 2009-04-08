@@ -18,14 +18,6 @@ Feature: Adding a new book
 		And the book I have exists
 		And the book has the isbn "0-13-189834-5"
 		When I go to add new book page
-		And I fill in "isbn" with "0-13-189834-5"
+		And I fill in "book_isbn" with "0-13-189834-5"
 		And I press "submit"
 		Then I should see "this book already exists"
-		
-	Scenario: I try to add a book without an ISBN number
-		Given I am signed in
-		When I navigate to the add new book page 
-		And I fill in "title" with "a book with no isbn"
-		And I press "submit"
-		Then I should see "invalid"
-		

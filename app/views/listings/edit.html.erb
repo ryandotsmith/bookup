@@ -1,13 +1,19 @@
 <div id="center">
 	<h1> Update listing for <%= @listing.book.title %></h1>
-	<% form_for([@user,@listing]) do |f|%>
-
+	<ul class='form'>
+	<% form_for([@user,@listing], :html => {:class => 'new_book_form'}) do |f|%>
+		<li>
 		<%= f.label :market_status %>
 		<%= f.select :market_status, ['available','pending','sold'] %>
+		</li>
 
+		<li>
 		<%= f.label :price %>
 		<%= f.text_field :price %>
-
+		</li>
+		<li>
 		<%= f.submit 'update'%>
+		</li>
 	<% end %>
+	</ul>
 </div><!--end center-->

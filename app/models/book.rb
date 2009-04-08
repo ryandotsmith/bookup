@@ -1,9 +1,15 @@
 class Book < ActiveRecord::Base
   has_many :listings
   has_many :users, :through => :listings
+  has_many :active_listings, :class_name => "Listing", :conditions => { :market_status => 1 }
   validates_presence_of :isbn
   validates_uniqueness_of :isbn, :message => "this book already exists"
-
+  validate :valid_isbn
+  ####################
+  #valid_isbn
+  def valid_isbn
+    errors.add(:isbn, "This is not a valid ISBN.") unless ISBN_Tools.is_valid?(self.isbn)  
+  end#valid_isbn
   ####################
   #edition
   def edition
@@ -31,15 +37,19 @@ class Book < ActiveRecord::Base
   ####################
   #fetch_attrs_from_amazon()
   def fetch_attrs_from_amazon()
-    self.to_10!
-    isbn_number = ISBN_Tools.cleanup(self.isbn)
-    lookup = AmazonProducts::Lookup.new( isbn_number, 'ISBN')
-    result = lookup.execute
-    self.title      = result.title
-    self.edition    = result.edition
-    self.authors    = result.authors
-    self.list_price = result.list_price_usd
-    self.img_url    = result.medium_image.url
+    begin
+      self.to_10!
+      isbn_number = ISBN_Tools.cleanup(self.isbn)
+      lookup = AmazonProducts::Lookup.new( isbn_number, 'ISBN')
+      result = lookup.execute
+      self.title      = result.title
+      self.edition    = result.edition
+      self.authors    = result.authors
+      self.list_price = result.list_price_usd
+      self.img_url    = result.medium_image.url
+    rescue
+      false
+    end
   end#fetch_attrs_from_amazon()
   ####################
   # note that market_status == 1 => listing is available 

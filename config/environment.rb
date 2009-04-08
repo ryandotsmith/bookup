@@ -17,17 +17,21 @@ Rails::Initializer.run do |config|
   }
 
     require 'isbn/tools'
-    config.gem "thoughtbot-factory_girl",
-               :lib    => "factory_girl",
-               :source => "http://gems.github.com",
-               :version => '1.2.0'
 
+    config.gem 'rubaidh-google_analytics', 
+              :lib => 'rubaidh/google_analytics', 
+              :source => 'http://gems.github.com'
+    config.gem "thoughtbot-factory_girl",
+              :lib    => "factory_girl",
+              :source => "http://gems.github.com",
+              :version => '1.2.0'
    config.gem "thoughtbot-clearance", 
-               :lib     => 'clearance', 
-               :source  => 'http://gems.github.com', 
-               :version => '0.5.3'
+              :lib     => 'clearance', 
+              :source  => 'http://gems.github.com', 
+              :version => '0.5.3'
 
 end
+Rubaidh::GoogleAnalytics.tracker_id = "UA-8299171-1"
 AmazonProducts.config_location = 'config/amazon.yml'
 ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.merge!(:default => '%m/%d/%Y')
 ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:default => '%m/%d/%Y')

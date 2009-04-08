@@ -4,5 +4,8 @@ $(document).ready( function() {
 	$("#books_index_table").tablesorter({ widgets: ['zebra']});
 	$("#show_book_listings_table").tablesorter();
 	$("#average_book_price").corners('10px')
-	$("#notice").corners('10px')
+	$("#flash_notice").corners()
+	$("#flash_failure").corners()
+	$("#flash_success").corners()
+	$(".formError").corners()
 })//document

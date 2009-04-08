@@ -16,7 +16,7 @@
 	  <td><%= link_to book.title, book %></td>
 		<td><%= book.edition %></td>
 		<td><%= book.isbn %></td>
-		<td><%= book.listings.count %></td>
+		<td><%= book.active_listings.count %></td>
 		<td><%= "$" + book.average_price().to_s%></td>
 	</tr>
 	<% end %>

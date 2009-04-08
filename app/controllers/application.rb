@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
-    %(<div style="color:red">invalid</div>) + html_tag
+    %(<div class='red_ex'>) + html_tag + %(</div)
   end
 
 end

@@ -14,13 +14,11 @@ class BooksController < ApplicationController
 
   def create
     @book = @user.books.build( params[:book] )
-    @book.fetch_attrs_from_amazon()
     respond_to do |format|
-      if @book.save
-        flash[:notice] = 'Book was successfully added to list'
+      if @book.fetch_attrs_from_amazon() && @book.save
+        flash[:success] = 'Book was successfully added to list'
         format.html { redirect_to books_path }
       else
-        flash[:notice] = 'Book was not added.'
         format.html { render :action => "new" }
       end
     end
