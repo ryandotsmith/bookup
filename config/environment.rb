@@ -16,8 +16,7 @@ Rails::Initializer.run do |config|
     :secret      => '81db85d13a95fd4441145739a8760b073aaf422f2db4dcd99d4f78514f8e55849a58d61b8558c6327ff4aacafc0d78c302e9f3dc3b7839a44ca8615af121760b'
   }
 
-    require 'isbn/tools'
-    config.gem 'isgn-tools'
+    config.gem 'isbn-tools'
     config.gem 'rubaidh-google_analytics', 
               :lib => 'rubaidh/google_analytics', 
               :source => 'http://gems.github.com'
@@ -29,6 +28,7 @@ Rails::Initializer.run do |config|
               :lib     => 'clearance', 
               :source  => 'http://gems.github.com', 
               :version => '0.5.3'
+  require 'isbn/tools'
 
 end
 Rubaidh::GoogleAnalytics.tracker_id = "UA-8299171-1"
