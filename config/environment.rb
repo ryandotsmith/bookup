@@ -31,6 +31,6 @@ Rails::Initializer.run do |config|
 
 end
 Rubaidh::GoogleAnalytics.tracker_id = "UA-8299171-1"
-AmazonProducts.config_location = 'config/amazon.yml'
+#AmazonProducts.config_location = 'config/amazon.yml'
 ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.merge!(:default => '%m/%d/%Y')
 ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:default => '%m/%d/%Y')
