@@ -1,0 +1,3 @@
+[submodule "vendor/plugins/amazon_products"]
+	path = vendor/plugins/amazon_products
+	url = git://github.com/siannopollo/amazon_products.git
