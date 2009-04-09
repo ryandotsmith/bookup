@@ -4,7 +4,7 @@
 	<% form_for([@user,@listing], :html => {:class => 'new_book_form'}) do |f|%>
 		<li>
 		<%= f.label :market_status %>
-		<%= f.select :market_status, ['available','pending','sold'] %>
+		<%= f.select :market_status, ['available','pending','sold'], :include_blank => true  %>
 		</li>
 
 		<li>
