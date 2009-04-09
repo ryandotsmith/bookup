@@ -8,6 +8,7 @@ module AmazonProducts
   # less than 'Large'.
   #
   class Product
+    attr_reader :item_attributes
     def self.create(item, search_index)
       product_group = item.item_attributes.first.product_group.to_s.gsub(' ', '')
       (search_index == :any || search_index.match(product_group)) ? AmazonProducts.const_get(product_group).new(item) : nil
@@ -17,7 +18,7 @@ module AmazonProducts
       @item = item
       @item_attributes = @item.item_attributes
       @attribute_names = @item_attributes.properties.dup
-      @attribute_names.concat %w(asin small_image medium_image large_image)
+      @attribute_names.concat %w(asin small_image medium_image large_image list_price_usd)
     end
     
     def asin
@@ -47,7 +48,11 @@ module AmazonProducts
     def package_dimensions
       @package_dimensions ||= PackageDimensions.new(@item_attributes.first.package_dimensions.first)
     end
-    
+
+    def list_price_usd
+      @list_price_usd ||= @item_attributes.list_price.formatted_price.to_s
+    end#list_price_usd
+
     protected
       def method_missing(method, *args)
         return super unless @attribute_names.include?(method.to_s)
@@ -58,7 +63,7 @@ module AmazonProducts
   class Book < Product
     def initialize(item)
       super
-      @attribute_names.concat %w(authors language number_of_items number_of_pages)
+      @attribute_names.concat %w(authors language number_of_items number_of_pages edition)
     end
     
     def author
@@ -85,6 +90,11 @@ module AmazonProducts
       number_ofpages
     end
   end
+
+  def edition
+    @edition ||= @item_attributes.edition ||= nil
+  end#edition
+  
   
   class Music < Product
     def initialize(item)
