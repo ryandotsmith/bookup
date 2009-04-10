@@ -9,6 +9,7 @@ module AmazonProducts
   #
   class Product
     attr_reader :item_attributes
+
     def self.create(item, search_index)
       product_group = item.item_attributes.first.product_group.to_s.gsub(' ', '')
       (search_index == :any || search_index.match(product_group)) ? AmazonProducts.const_get(product_group).new(item) : nil
@@ -18,7 +19,7 @@ module AmazonProducts
       @item = item
       @item_attributes = @item.item_attributes
       @attribute_names = @item_attributes.properties.dup
-      @attribute_names.concat %w(asin small_image medium_image large_image list_price_usd)
+      @attribute_names.concat %w(asin small_image medium_image large_image list_price_usd lowest_price_usd)
     end
     
     def asin
@@ -52,6 +53,10 @@ module AmazonProducts
     def list_price_usd
       @list_price_usd ||= @item_attributes.list_price.formatted_price.to_s
     end#list_price_usd
+
+    def lowest_price_usd
+      @lowest_price_usd ||= @item.offer_summary.lowest_used_price.formatted_price.to_s
+    end#lowest_price_usd
 
     protected
       def method_missing(method, *args)

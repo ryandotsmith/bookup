@@ -24,5 +24,13 @@ describe AmazonProducts::Lookup do
     model = AmazonProducts::Lookup.new('0974514055', :search_by => 'ISBN', :index => 'Books')
     product = model.execute
     product.title.should == "Programming Ruby: The Pragmatic Programmers' Guide, Second Edition"
+    product.lowest_price_usd.should eql( 8 )
   end
+  
+  it "should return a list of offers" do
+    model = AmazonProducts::Lookup.new('0974514055', :search_by => 'ISBN', :index => 'Books', :response_group_size => 'Offers')
+    product = model.execute
+    product.offers.should eql( 6 )
+  end
+
 end

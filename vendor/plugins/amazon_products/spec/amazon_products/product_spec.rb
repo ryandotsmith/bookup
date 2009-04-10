@@ -13,7 +13,7 @@ describe 'Books' do
   end
   
   it 'should have extra attribute names' do
-    @product.attribute_names.should include('authors', 'language', 'number_of_items', 'number_of_pages')
+    @product.attribute_names.should include('authors', 'language', 'number_of_items', 'number_of_pages', 'list_price_usd')
   end
   
   it 'should respond to certain methods' do

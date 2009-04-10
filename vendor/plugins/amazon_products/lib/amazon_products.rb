@@ -32,3 +32,4 @@ end
 require 'amazon_products/search'
 require 'amazon_products/lookup'
 require 'amazon_products/product'
+require 'amazon_products/offer'
