@@ -28,6 +28,10 @@ Rails::Initializer.run do |config|
               :lib     => 'clearance', 
               :source  => 'http://gems.github.com', 
               :version => '0.5.3'
+  config.gem "mbleigh-acts-as-taggable-on", 
+              :source => "http://gems.github.com", 
+              :lib => "acts-as-taggable-on"
+
   require 'isbn/tools'
 
 end

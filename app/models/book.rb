@@ -1,4 +1,5 @@
 class Book < ActiveRecord::Base
+  acts_as_taggable_on :discipline, :course, :instructor
   has_many :listings
   has_many :users, :through => :listings
   has_many :active_listings, :class_name => "Listing", :conditions => { :market_status => 1 }

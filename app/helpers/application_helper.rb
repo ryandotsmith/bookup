@@ -10,7 +10,7 @@ module ApplicationHelper
   ####################
   #get_css
   def get_css
-    ['style','humanity','tablesorter','table','form','list']
+    ['style','humanity','tablesorter','table','form','list','jquery.autocomplete']
   end#get_css
   ####################
   #get_js
@@ -18,9 +18,10 @@ module ApplicationHelper
     [ 'jquery.min.js',
         'jquery-ui.min.js',
           'jquery.corner.js',
-            'application.js',
               'jquery.tablesorter.min.js',
-                'jrails']
+                'jrails',
+                  'jquery.autocomplete.js',
+                      'application.js']
   end#get_js
 
   ####################

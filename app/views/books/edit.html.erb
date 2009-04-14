@@ -1,0 +1,6 @@
+<div id="center">
+	<% form_for @book do |f|%>
+		<%= f.text_field :discipline_list, :value => "" , :class => 'autocomplete', 'autocomplete_url'=> autocomplete_tag_list_url %>
+		<%= f.submit "update"%>
+	<% end %>
+</div><!--end center-->

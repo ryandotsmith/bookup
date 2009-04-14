@@ -1,12 +1,11 @@
 Factory.sequence :isbn do |n|
-  isbn = "#{n}"
-  9.times {|i| isbn <<"#{rand(10)}"} 
-  isbn.to_i
+  array = ["0131427067","0131898345","0130337358"]
+  array[n.to_i]
 end
 
 Factory.define :book do |b|
   b.title         { "Introduction to Logic" }
-  b.isbn          { '0131898345' }
+  b.isbn          { Factory.next :isbn }
   b.edition       { "12th" }
 end
 
