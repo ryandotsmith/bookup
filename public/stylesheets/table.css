@@ -29,3 +29,27 @@ table.index tbody tr:hover td{
 table.index td a {
 	color:blue;
 }
+
+/*Tags Table*/
+table.tags_table {
+	width:35em;
+}
+
+table.tags_table  td {
+	font-size:10pt;
+	font-weight:bold;
+	color:#000;
+	text-align:center;
+	background-color:#8D9FB6;
+	border:0.25px solid #4D5764;
+}
+table.tags_table td.update_link a{
+	text-decoration:none;
+	color:#2A211C;
+}
+table.tags_table td.update_link a:hover{
+	color:#ffffff;
+}
+
+
+

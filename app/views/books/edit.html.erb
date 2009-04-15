@@ -1,6 +1,27 @@
 <div id="center">
-	<% form_for @book do |f|%>
-		<%= f.text_field :discipline_list, :value => "" , :class => 'autocomplete', 'autocomplete_url'=> autocomplete_tag_list_url %>
-		<%= f.submit "update"%>
+	<h2>Update information on "<%= @book.title %>."</h2>
+	<ul class='form'>
+	<% form_for @book, :html => {:class => 'new_book_form'} do |f|%>
+		<li>Discipline Tag </li>
+		<%= f.text_field 	:discipline_list, 
+											:value => @book.discipline_list , 
+											:class => 'autocomplete', 
+											'autocomplete_url'=> autocomplete_tag_list_url(:autocomplete_attr => :discipline) %>
+		<li>Course Title Tag </li>
+		<%= f.text_field 	:course_title_list, 
+											:value => @book.course_title_list , 
+											:class => 'autocomplete', 
+											'autocomplete_url'=> autocomplete_tag_list_url(:autocomplete_attr => :course_title) %>
+		<li>Course Number Tag </li>
+		<%= f.text_field 	:course_number_list, 
+											:value => @book.course_number_list , 
+											:class => 'autocomplete', 
+											'autocomplete_url'=> autocomplete_tag_list_url(:autocomplete_attr => :course_number) %>
+		<li>Instructor Tag </li>
+		<%= f.text_field 	:instructor_list, 
+											:value => @book.instructor_list , 
+											:class => 'autocomplete', 
+											'autocomplete_url'=> autocomplete_tag_list_url(:autocomplete_attr => :instructor) %>
+		<li><%= f.submit "update"%></li>		
 	<% end %>
 </div><!--end center-->

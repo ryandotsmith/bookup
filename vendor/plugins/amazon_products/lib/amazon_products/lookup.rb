@@ -7,7 +7,6 @@ module AmazonProducts
       response_group = AmazonProducts::ResponseGroup.new response_group_size
       request = AmazonProducts::Request.new AmazonProducts.access_key_id, nil, 'us'
       response = request.search(item_lookup, response_group)
-      #Offer.new(response.item_lookup_response.first.items.first.item.first) if response_group_size == 'Offers'
       Product.create(response.item_lookup_response.first.items.first.item.first, index || :any)
     end
     

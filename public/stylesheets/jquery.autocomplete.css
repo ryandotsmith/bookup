@@ -25,7 +25,7 @@
 	*/
 	/*width: 100%;*/
 	font: menu;
-	font-size: 19px;
+	font-size: 12px;
 	/* 
 	it is very important, if line-height not setted or setted 
 	in relative units scroll will be broken in firefox
@@ -35,7 +35,7 @@
 }
 
 .ac_loading {
-	background: white url('indicator.gif') right center no-repeat;
+	background: white url('/images/spinner.gif') right center no-repeat;
 }
 
 .ac_odd {

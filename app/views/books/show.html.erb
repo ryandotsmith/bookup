@@ -1,7 +1,10 @@
 <div id="center">
+
 	<div id="image" style='float:right'>
 		<%= image_tag("#{ @book.img_url }")%>
 	</div><!--end image-->
+	<%= render :partial => 'book_tags', :locals => { :book => @book }%>
+
 	<h1><%=  @book.title %></h1>
 	<h2>
 		<a><%= @book.edition %> <%= "edition" if @book.edition.length > 1 %></a>
@@ -9,12 +12,16 @@
 		<a>ISBN: <%= @book.isbn %></a>  
 		<br />
 		<a>Amazon List Price: <%= @book.list_price %></a>
-	</h2>
-	<h3>
-		People selling this book:
 		<br />
+		<a>Amazon Used Price:</a>
+	</h2>
+
+	<h3>
 		<a style='color:orange'>*</a>
 		<%= link_to "sell your copy", new_book_listing_path(@book)%>
+		<br />
+		People selling this book:
 	</h3>
 	<%= render :partial => 'listings/book_listings', :locals => { :book => @book } %>
+
 </div><!--end center-->

@@ -1,6 +1,9 @@
 Factory.sequence :isbn do |n|
-  array = ["0131427067","0131898345","0130337358"]
-  array[n.to_i]
+  array = ["0131427067","0131898345","0130337358","032133678X",
+            "0596527756","0321349601","1933988134","1590599799","0596517335","1933988347"]
+  array1 = array
+  array += array1
+  array[n]
 end
 
 Factory.define :book do |b|

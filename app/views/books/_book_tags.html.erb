@@ -1,0 +1,11 @@
+<table class='tags_table'>
+	<tbody>
+	<tr>
+		<td><%= book.discipline_list %></td>
+		<td><%= book.course_number_list %></td>
+		<%= %(<td> #{book.course_title_list} </td>) if !book.course_title_list.nil? %>
+		<td><%= book.instructor_list %></td>
+		<td class='update_link'><%= link_to "edit", edit_book_path(book)%></td>
+	</tr>
+	<tbody>
+</table>

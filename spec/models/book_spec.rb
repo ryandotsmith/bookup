@@ -13,6 +13,7 @@ describe "create a new book" do
     @book2.should_not be_valid
     @book2.errors[:isbn].should eql("this book already exists")
   end
+  
   describe "generating book info from an isbn number" do
 
     it "should validate and hyphenate the ISBN number" do
@@ -31,6 +32,7 @@ describe "create a new book" do
       @book1.img_url.should eql( @book1.img_url )
     end
   end
+
 end
 
 describe "find how many copies of this book are for sale" do
@@ -41,6 +43,7 @@ describe "find how many copies of this book are for sale" do
     @user.listings << Factory(:listing, :book => @book, :user => @user, :price => 1.99 )
     @book.get_all_for_sale.length.should == 1
   end
+
 end
 
 describe "finding the average price of a book" do
@@ -71,6 +74,65 @@ describe "finding the average price of a book" do
     end
     Book.average_price().should eql(7.00)
   end
+end
 
+describe "tagging a book" do
+  before(:each) do
+    @math_book = Factory( :book )
+    @cs_book = Factory( :book )
+    @math_book.discipline_list << "Mathematics"
+    @math_book.discipline_list << "Statistics"
+    @math_book.course_title_list << "Introduction to Mathematical Statistics"
+    @math_book.course_number_list << "436"
+    @cs_book.instructor_list << "Yong Zeng"
+    @cs_book.discipline_list << "Computer Science"
+    @math_book.save
+    @cs_book.save
+  end# before 
+
+  it "should suggest discipline tags based on user input" do
+    params = {}
+    params[:autocomplete_attr] = "discipline"
+    params[:q] = "ma"
+    result = Book.suggest_tags( params )
+    result.include?("Mathematics").should == true
+    result.include?("Statistics").should == false
+  end
+
+  it "should suggest discipline tags based on user input" do
+    params = {}
+    params[:autocomplete_attr] = "discipline"
+    params[:q] = "ma"
+    result = Book.suggest_tags( params )
+    result.include?("Mathematics").should == true
+    result.include?("Computer Science").should == false    
+  end
+  
+  it "should suggest instructors based on user input" do
+    params = {}
+    params[:autocomplete_attr] = "instructor"
+    params[:q] = "Zen"
+    result = Book.suggest_tags( params )
+    result.include?("Yong Zeng").should == true
+  end
+
+  it "should suggest course title based on user input" do
+    params = {}
+    params[:autocomplete_attr] = "course_title"
+    params[:q] = "introduction"
+    result = Book.suggest_tags( params )
+    result.include?("Introduction to Mathematical Statistics").should == true        
+  end
+  
+  it "should suggest course number based on user input" do
+    params = {}
+    params[:autocomplete_attr] = "course_number"
+    params[:q] = "4"
+    result = Book.suggest_tags( params )
+    result.include?("436").should == true    
+  end
 
 end
+
+
+

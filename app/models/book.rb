@@ -1,11 +1,24 @@
 class Book < ActiveRecord::Base
-  acts_as_taggable_on :discipline, :course, :instructor
+  acts_as_taggable_on :discipline, :course_title, :course_number, :instructor
   has_many :listings
   has_many :users, :through => :listings
   has_many :active_listings, :class_name => "Listing", :conditions => { :market_status => 1 }
   validates_presence_of :isbn
   validates_uniqueness_of :isbn, :message => "this book already exists"
   validate :valid_isbn
+
+  ####################
+  #self.suggest_tags( params )
+  def self.suggest_tags( params )
+    search_on = params[:autocomplete_attr]
+    search_string = params[:q]
+    @all_tags = Book.send("#{search_on}_counts")
+    @tags = []
+    @all_tags.each do |tag|
+      @tags << tag.name if tag.name.downcase.include?(search_string.to_s.downcase)
+    end
+    @tags
+  end#self.suggest_tags( params )
   ####################
   #valid_isbn
   def valid_isbn

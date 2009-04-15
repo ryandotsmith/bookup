@@ -8,14 +8,16 @@ $(document).ready( function() {
 	$("#flash_failure").corners()
 	$("#flash_success").corners()
 	$(".formError").corners()
+	$(".tags_table td").corners()
+
 	// Books#edit 
 		$('input.autocomplete').each(function(){
 	    var input = $(this);
 	      input.autocomplete(input.attr('autocomplete_url'),{
-	      matchContains:1,//also match inside of strings when caching
-	//    mustMatch:1,//allow only values from the list
-	//    selectFirst:1,//select the first item on tab/enter
-	      removeInitialValue:0//when first applying $.autocomplete
+	      //matchContains:1,//also match inside of strings when caching
+	    	//mustMatch:1,//allow only values from the list
+	    	//selectFirst:1,//select the first item on tab/enter
+	      //removeInitialValue:0//when first applying $.autocomplete
 	    });
 		}); 
   

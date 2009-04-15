@@ -1,14 +1,10 @@
 class BooksController < ApplicationController
-  autocomplete_for :tags, :tag_list
+  #autocomplete_for :tags, :tag_list
   before_filter :authenticate, :except => [:index,:show]
   before_filter :load_user
 
   def autocomplete_tag_list
-    @all_tags = Tag.find(:all, :order => 'name ASC')
-    re = Regexp.new("^#{params[:q]}", "i")
-    @tags = @all_tags.find_all do |t|
-      t.name.match re
-    end
+    @tags = Book.suggest_tags( params )
     render :inline => @tags
   end
 
@@ -44,7 +40,13 @@ class BooksController < ApplicationController
   end
   
   def update
-    
+    @book = Book.find( params[:id] )
+    if @book.update_attributes( params[:book] )
+      flash[:success] = "upaded the book."
+      redirect_to @book
+    else
+      render :action => 'edit'
+    end
   end
 
   def lookup
