@@ -1,47 +1,12 @@
 <div id="center">
-	<table id='books_index_table' class='index'>
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>Edition</th>
-			<th>ISBN</th>
-			<th>Copies For Sale</th>
-			<th>Average Price</th>
-		</tr>
-	</thead>
-	<tbody>
-	<% @books.each do |book|%>
-	<tr>
-	  <td><%= link_to book.title, book %></td>
-		<td><%= book.edition %></td>
-		<td><%= book.isbn %></td>
-		<td><%= book.active_listings.count %></td>
-		<td><%= "$" + book.average_price().to_s%></td>
-	</tr>
+	<table>
+	<% Book.find_and_sort().each do |discipline,books| %>
+		<tr style='color:red;'><td><%= discipline %></td></tr>
+		<% books.each do |book|%>
+			<tr><td><%= book.title %></td></tr>
+		<% end %>
 	<% end %>
-	</tbody>
-	</table>	
+	</table>
 	<p> Have a book that is not on the list? </p>
 	<%= link_to "add it to the list", new_book_path %>
-	<div id="course tags">
-		<a>Disciplines</a>
-		<% Book.discipline_counts.each do |disc|%>
-			<ul>
-				<li><%= disc.name%></li>
-			</ul>
-		<% end %>
-		<a>Courses</a>
-		<% Book.course_title_counts.each do |disc|%>
-			<ul>
-				<li><%= disc.name%></li>
-			</ul>
-		<% end %>
-		<a>Courses</a>
-		<% Book.course_title_counts.each do |disc|%>
-			<ul>
-				<li><%= disc.name%></li>
-			</ul>
-		<% end %>
-		
-	</div><!--end course tags-->
 </div><!--end center-->

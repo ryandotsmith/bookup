@@ -6,7 +6,20 @@ class Book < ActiveRecord::Base
   validates_presence_of :isbn
   validates_uniqueness_of :isbn, :message => "this book already exists"
   validate :valid_isbn
+  ####################
+  #self.find_and_sort
+  def self.find_and_sort( params={} )
+    disciplines = []
+    Book.discipline_counts.each do |discipline|
+      disciplines << discipline.name
+    end
 
+    hash = {}
+    disciplines.each do |discipline|
+      hash[discipline] = Book.tagged_with( discipline, :on => :discipline )
+    end
+    hash
+  end#self.find_and_sort
   ####################
   #self.suggest_tags( params )
   def self.suggest_tags( params )

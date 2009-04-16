@@ -134,5 +134,29 @@ describe "tagging a book" do
 
 end
 
+describe "sorting books on tags" do
+  before(:each)do
+    @b1 = Factory(:book)
+    @b1.discipline_list << "Mathematics"
+    @b1.save
+
+    @b2 = Factory(:book)
+    @b2.discipline_list << "Mathematics"
+    @b2.save
+
+    @b3 = Factory(:book)
+    @b3.discipline_list << "Computer Science"
+    @b3.save
+
+    @b4 = Factory(:book)
+    @b4.discipline_list << "Computer Science"
+    @b4.save
+  end
+  
+  it "should return an array with tag name as first element" do
+    Book.find_and_sort().should == { "Mathematics" => [@b1,@b2], "Computer Science" => [@b3,@b4] }
+  end
+
+end
 
 
