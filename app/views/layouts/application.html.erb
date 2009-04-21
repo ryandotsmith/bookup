@@ -17,6 +17,7 @@
 		<%= render :partial => '/sessions/session_bar'%>
 	</div><!--end header-->
 	<div id="info_bar">
+ 		<p style='margin-top:10px;'><%= link_to_function "This is a beta release. Click this before using.","$('#waiting_divs').toggle();",:style => 'color:white'%></p>
 		<%= render :partial => 'global/flash', :locals => { :flash => flash }%>
 	</div><!--end info_bar-->
 	<div id="container">
@@ -27,7 +28,7 @@
 				<p>If you have a text book add it to the list and then create a listing to sell or trade it</p>
 				<p>Also, if you are interested in the development of this application, please email me:
 					this.ryansmith at gmail dot com and visit my blog www.ryan-smith.org</p>
-				<p>Finally, this software is well tested however it is in beta. This means that some feautures 
+				<p>Finally, this software is well tested however it is in beta. This means that some features 
 					are not yet implemented and there may be bugs. Please let me know if you find a bug.</p>
 				<p>Thanks, Ryan Smith. </p>
 					<p><%= link_to_function "close",
