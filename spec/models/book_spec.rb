@@ -5,6 +5,7 @@ describe "create a new book" do
   it "should create a new instance given valid attributes" do
     @book = Factory( :book )
     @book.should be_valid
+    @book.discipline_list.should == ["Uncategorized"]
   end
 
   it "should not allow two books with the same isbn number" do
@@ -78,15 +79,16 @@ end
 
 describe "tagging a book" do
   before(:each) do
-    @math_book = Factory( :book )
-    @cs_book = Factory( :book )
+    @math_book = Factory.build( :book )
     @math_book.discipline_list << "Mathematics"
     @math_book.discipline_list << "Statistics"
     @math_book.course_title_list << "Introduction to Mathematical Statistics"
     @math_book.course_number_list << "436"
+    @math_book.save
+
+    @cs_book = Factory.build( :book )
     @cs_book.instructor_list << "Yong Zeng"
     @cs_book.discipline_list << "Computer Science"
-    @math_book.save
     @cs_book.save
   end# before 
 
@@ -151,12 +153,28 @@ describe "sorting books on tags" do
     @b4 = Factory(:book)
     @b4.discipline_list << "Computer Science"
     @b4.save
+
+    @b5 = Factory(:book)
+    
   end
   
   it "should return an array with tag name as first element" do
-    Book.find_and_sort().should == { "Mathematics" => [@b1,@b2], "Computer Science" => [@b3,@b4] }
+    params = {}
+    params[:q] = "discipline"
+    result = Book.find_and_sort( params )
+    result.should == [ [ "Uncategorized",    [@b5]     ], 
+                       [ "Mathematics",      [@b1,@b2] ], 
+                       [ "Computer Science", [@b3,@b4] ] ].sort
   end
 
+  it "should put all of the books without tags at the end of the hash" do
+    params = {}
+    params[:q] = "discipline"
+    result = Book.find_and_sort( params )
+    result.last.should == ["Uncategorized",[ @b5 ] ]
+  end
+  
+  
 end
 
 

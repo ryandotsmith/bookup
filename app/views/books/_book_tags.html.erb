@@ -1,11 +1,37 @@
-<table class='tags_table'>
-	<tbody>
-	<tr>
-		<td><%= book.discipline_list %></td>
-		<td><%= book.course_number_list %></td>
-		<%= %(<td> #{book.course_title_list} </td>) if !book.course_title_list.nil? %>
-		<td><%= book.instructor_list %></td>
-		<td class='update_link'><%= link_to "edit", edit_book_path(book)%></td>
-	</tr>
-	<tbody>
-</table>
+<div id="show_tags_link">
+	<%= link_to "show tags", "#"%>	
+</div><!--end show_tags_link-->
+
+<div id="tag_list" style='display:none;'>
+	<ul>
+	<% book.discipline_list.each do |tag| %>
+		<li><%= link_to tag, books_url( :q => 'discipline', :q_selection => tag )%></li>
+	<% end %>
+	</ul>
+	<ul>
+	<% book.course_number_list.each do |tag| %>
+		<li><%= link_to tag, books_url( :q => 'course_number', :q_selection => tag )%></li>
+	<% end %>
+	</ul>
+	<ul>
+	<% book.course_title_list.each do |tag| %>
+		<li><%= link_to tag, books_url( :q => 'course_title', :q_selection => tag )%></li>
+	<% end %>
+	</ul>
+	<ul>
+	<% book.instructor_list.each do |tag| %>
+		<li><%= link_to tag, books_url( :q => 'instructor', :q_selection => tag )%></li>
+	<% end %>
+	</ul>
+	<div id='edit_button'><%= link_to image_tag("/images/icons/edit_button.png"), edit_book_path(book)%></div>
+	<div id="close_button"><%= link_to "close", "#" %></div>
+</div><!--end tag_list-->
+<script>
+$('#show_tags_link, #close_button').click(function () {
+     if ($("#tag_list").is(":hidden")) {
+       $("#tag_list").slideDown("fast");
+		} else {
+       $("#tag_list").slideUp("slow");
+     }
+   });
+</script>

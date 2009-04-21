@@ -9,16 +9,23 @@ class Book < ActiveRecord::Base
   ####################
   #self.find_and_sort
   def self.find_and_sort( params={} )
-    disciplines = []
-    Book.discipline_counts.each do |discipline|
-      disciplines << discipline.name
-    end
+    raise "Tag Type was not specified in the params hash" unless params[:q]
+    selected_collection = params[:q_selection]
+    tag_type            = params[:q]
 
-    hash = {}
-    disciplines.each do |discipline|
-      hash[discipline] = Book.tagged_with( discipline, :on => :discipline )
+    tags = []
+    Book.send("#{tag_type}_counts").each do |tag|
+      tags << tag.name
     end
-    hash
+    # create a hash with discipline names as keys and arrays of books as values.
+    hash = {}
+    tags.each do |tag|
+      hash[tag] = Book.tagged_with( tag, :on => tag_type )
+    end
+    # if a selected_collection is specified 
+    # then only return the result related to the specification 
+    return { selected_collection => hash[selected_collection] }  if selected_collection
+    return hash.sort
   end#self.find_and_sort
   ####################
   #self.suggest_tags( params )

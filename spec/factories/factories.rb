@@ -4,6 +4,7 @@ Factory.sequence :isbn do |n|
               "1932394885"]
   array1 = array
   array += array1
+  array += array1
   array[n]
 end
 

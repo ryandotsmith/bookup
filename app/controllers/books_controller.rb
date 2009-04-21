@@ -9,7 +9,8 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.find(:all)
+    params[:q] ||= 'discipline'
+    @books_hash = Book.find_and_sort( params )
   end
   
   def new

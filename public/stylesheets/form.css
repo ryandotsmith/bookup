@@ -72,9 +72,31 @@
 	border: 3px outset white;
 	width:16em ;
 	padding: 7px;
-
 	color: white;
 }
 .user_form input[type=submit]:hover {
 	border: 3px outset #1e1c77;
+}
+/* Form for book tags */
+.tag_form label {
+	float: none;
+	text-align:top;
+	color: gray;
+	font-size:10pt;
+}
+.tag_form input {
+	border:solid 2px #aacfe4;
+	background-color: white;
+	color: black;
+	font-size: 10pt;
+	width: 13em;
+	margin-top: .5em;
+	margin-left:0;
+	padding: 7px;
+}
+.tag_form input[type=submit] {
+	background-color: black;
+	color: green;
+	width:5em ;
+	padding: 7px;
 }

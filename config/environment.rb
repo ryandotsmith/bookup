@@ -9,6 +9,8 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
 
+  config.active_record.observers = :book_observer
+  
   config.time_zone = 'UTC'
 
   config.action_controller.session = {

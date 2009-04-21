@@ -32,24 +32,80 @@ table.index td a {
 
 /*Tags Table*/
 table.tags_table {
-	width:35em;
+	width:40em;
 }
 
 table.tags_table  td {
 	font-size:10pt;
-	font-weight:bold;
 	color:#000;
+	max-width:3em;
 	text-align:center;
 	background-color:#8D9FB6;
 	border:0.25px solid #4D5764;
 }
-table.tags_table td.update_link a{
+table.tags_table  td a {
 	text-decoration:none;
 	color:#2A211C;
+}
+table.tags_table td.update_link a{
+	text-decoration:none;
+	color:#D6EB1F;
 }
 table.tags_table td.update_link a:hover{
 	color:#ffffff;
 }
+/* Edit tags table */
+table.edit_tags {
+	width:400px;
+}
+table.edit_tags tr {
+	color: gray;
+	font-size:10pt;
+	padding-bottom:0;
+}
+table.edit_tags td{
+	padding-top:0;
+}
 
+/* Books index table */
 
-
+table.books_index {
+	border-collapse: collapse;
+	border-bottom:2px dotted black;
+	width:800px;
+	font-family:helvetica;
+	font-size:16pt;
+}
+table.books_index caption {
+	padding:4px;
+	text-align:left;
+	background-color:#90A1D5;
+}
+table.books_index thead tr th, table.books_index tfoot tr th {
+	text-align:left;
+	font-size: 8pt;
+	padding: 4px;
+}
+table.books_index tbody td {
+	color: #3D3D3D;
+	padding:6px;
+	background-color: #FFF;
+	height:2em;
+	max-width:6em;
+}
+table.books_index tbody tr.discipline td{
+	background-color:red;
+}
+table.books_index tbody tr.odd td{
+	background-color:#C9F8AF;
+}
+table.books_index tbody tr.even td{
+	background-color:#F2F8CD;
+}
+table.books_index tbody tr:hover td{
+	color:#FB9900;
+	text-decoration: underline;
+}
+table.books_index td a {
+	color:blue;
+}

@@ -1,6 +1,7 @@
 <table id='show_book_listings_table' class='tablesorter'>
 <thead>
   <tr>
+		<th>Book</th>
 	  <th>Status</th>
 		<th>Price</th>
 	  <th>Listing Date</th>  
@@ -11,6 +12,7 @@
 <tbdoy>
 	<% listings.each do |listing| %>
   <tr>
+		<td><%= shorten listing.book.title %></td>
 		<td><%= get_market_status( listing ) %></td>
 		<td><%= "$" + listing.price.to_s %>
     <td><%= listing.created_at.to_s %></td>

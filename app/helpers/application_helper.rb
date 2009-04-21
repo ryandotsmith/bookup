@@ -31,7 +31,12 @@ module ApplicationHelper
    domain = attr.scan(/^([^@]+)(@.*)$/).flatten.second
    user[0..1] + "..." + user[-1..-1] + domain
   end#scribble( attr )
-
+  ####################
+  #shorten
+  def shorten( attr )
+    return short_attr = attr[0..24] + "... " if attr.length >= 24
+    attr
+  end#shorten
   def clippy(text, bgcolor='#FFFFFF')
     html = <<-EOF
       <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"

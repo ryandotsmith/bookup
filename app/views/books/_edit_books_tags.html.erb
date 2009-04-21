@@ -1,0 +1,43 @@
+<% form_for book, :html => {:class => 'tag_form'} do |f|%>
+<table class='edit_tags'>
+<thead>
+  <tr>
+	  <th>Discipline</th>
+	  <th>Course Title</th>
+		<th>Course Number</th>
+		<th>Instructor</th>  
+  </tr>
+</thead>
+<tbody>
+	<tr>
+	<td>
+	<%= f.text_field 	:discipline_list, 
+										:value => book.discipline_list , 
+										:class => 'autocomplete', 
+										'autocomplete_url'=> autocomplete_tag_list_url(:autocomplete_attr => :discipline) %>
+	</td>
+	<td>
+	<%= f.text_field 	:course_title_list, 
+										:value => book.course_title_list , 
+										:class => 'autocomplete', 
+										'autocomplete_url'=> autocomplete_tag_list_url(:autocomplete_attr => :course_title) %>
+	</td>
+	<td>
+	<%= f.text_field 	:course_number_list, 
+										:value => book.course_number_list , 
+										:class => 'autocomplete', 
+										'autocomplete_url'=> autocomplete_tag_list_url(:autocomplete_attr => :course_number) %>
+	</td>
+	<td>
+	<%= f.text_field 	:instructor_list, 
+										:value => book.instructor_list , 
+										:class => 'autocomplete', 
+										'autocomplete_url'=> autocomplete_tag_list_url(:autocomplete_attr => :instructor) %>
+	</td>
+	</tr>
+	<tr>
+		<td><%= f.submit "update"%></td>
+	</tr>
+</tbody>
+</table>
+<% end %>

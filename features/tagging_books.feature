@@ -14,3 +14,6 @@ Feature: Tagging a book
 		And I fill in "book_discipline_list" with "Math"
 		Then I should see "Mathematics"
 		
+	Scenario: Clicking on a tag should show a list of books matching that tag
+		Given I am signed in 
+		And 

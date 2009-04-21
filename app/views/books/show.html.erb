@@ -20,8 +20,9 @@
 		<a style='color:orange'>*</a>
 		<%= link_to "sell your copy", new_book_listing_path(@book)%>
 		<br />
-		People selling this book:
 	</h3>
-	<%= render :partial => 'listings/book_listings', :locals => { :book => @book } %>
-
+	<% if @book.listings.count != 0 %>
+		People selling this book:	
+		<%= render :partial => 'listings/book_listings', :locals => { :book => @book } %>
+	<% end %>
 </div><!--end center-->
