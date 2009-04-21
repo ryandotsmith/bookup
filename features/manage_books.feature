@@ -11,7 +11,7 @@ Feature: Adding a new book
 		When I go to add new book page
 		And I fill in "book_isbn" with "0131898345"
 		And I press "submit"
-		Then I should see "Create tags for 'Introduction to Logic.'" 
+		Then I should see "Update tags or Go to Book." 
 
 	Scenario: The book I have is on the list and I try to add the book	
 		Given I am signed in

@@ -1,10 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 STRICT//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>BookUp <%= controller.action_name %></title>
-
 	<% get_css.each do |sheet| %>
 		<%= stylesheet_link_tag sheet %>
 	<% end %>
@@ -19,11 +17,9 @@
 		<%= render :partial => '/sessions/session_bar'%>
 	</div><!--end header-->
 	<div id="info_bar">
-		<p style='margin-top:10px;'><%= link_to_function "This is a beta release. Click this before using.",
-				"$('#waiting_divs').toggle();",:style => 'color:white'	%></p>
+		<%= render :partial => 'global/flash', :locals => { :flash => flash }%>
 	</div><!--end info_bar-->
 	<div id="container">
-		<%= render :partial => 'global/flash', :locals => { :flash => flash }%>
 		<%= yield  %>		
 		<div id="waiting_divs" style='display:none'>
 			<div id="beta_warning">

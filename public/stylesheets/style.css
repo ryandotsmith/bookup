@@ -7,12 +7,12 @@ h1 {
 	font-size:18pt;
 	color:#363636;
 }
-h1 a{
+h1 a {
 	font-size:18pt;
 	color:#363636;
 }
-
 h2 {
+	margin-top:20px;
 	font-size:12pt;
 	color:#363636;
 }
@@ -29,10 +29,10 @@ h3 a:hover {
 	border-bottom:1px solid yellow;
 }
 #container a.highlight {
-	margin-top: .5em;
 	font-size:10pt;
 	width:7em;
-	padding:7px;
+	padding:5px;
+	color:#3C3C3C;
 	background-color:#F2D37A;
 }
 #header {
@@ -48,8 +48,6 @@ h3 a:hover {
 	float:left;
 	border-style: none;
 }
-
-
 #session_bar {
 	width:300px;
 	height:90px;
@@ -82,7 +80,6 @@ h3 a:hover {
 	color:yellow;
 	text-decoration:none;
 }
-
 #info_bar {
 	color:#FFFFE3;
 	position:absolute;
@@ -93,8 +90,6 @@ h3 a:hover {
 	width:480px;
 	padding-left:5px;
 }
-
-
 #container {
 	position:absolute;
 	background-image:url(/images/bookup_background.png);
@@ -150,24 +145,21 @@ h3 a:hover {
 	float:left;
 }
 #flash_failure {
+	color:#1F1F1F;
 	padding:4px;
-	margin-top:2em;
-	margin-left:20%;
-	margin-right:20%;
+	margin-top:4px;
 	background:#E57872;
 }
 #flash_success {
+	color:#1F1F1F;
 	padding:4px;
-	margin-top:2em;
-	margin-left:20%;
-	margin-right:20%;
+	margin-top:4px;
 	background:#ADE6A4;
 }
 #flash_notice {
+	color:#1F1F1F;
 	padding:4px;
-	margin-top:2em;
-	margin-left:20%;
-	margin-right:20%;
+	margin-top:4px;
 	background:#E2CB5D;
 }
 #tag_list {

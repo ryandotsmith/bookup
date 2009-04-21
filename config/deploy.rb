@@ -1,9 +1,10 @@
 #############################################################
 #	Application
 #############################################################
-
-set :application, "bookup"
-set :deploy_to, "/home/rsmith/app/#{application}"
+require 'capistrano/ext/multistage'
+set :stages, %w(production staging)
+set( :application ) { "bookup_#{ stage }" }
+set( :deploy_to) { "/home/rsmith/app/#{application}" }
 
 #############################################################
 #	Settings
@@ -11,6 +12,8 @@ set :deploy_to, "/home/rsmith/app/#{application}"
 
 default_run_options[:pty] = true
 set :use_sudo, false
+set :keep_releases, 3
+set :git_enable_submodules, 1
 
 #############################################################
 #	Servers
