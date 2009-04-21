@@ -25,7 +25,7 @@ class BooksController < ApplicationController
     respond_to do |format|
       if @book.fetch_attrs_from_amazon() && @book.save
         flash[:success] = 'Book was successfully added to list'
-        format.html { redirect_to books_path }
+        format.html { redirect_to edit_book_path(@book) }
       else
         format.html { render :action => "new" }
       end

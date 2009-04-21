@@ -28,6 +28,13 @@ h3 a:hover {
 	color:green;
 	border-bottom:1px solid yellow;
 }
+#container a.highlight {
+	margin-top: .5em;
+	font-size:10pt;
+	width:7em;
+	padding:7px;
+	background-color:#F2D37A;
+}
 #header {
 	position:absolute;
 	margin-top:0;

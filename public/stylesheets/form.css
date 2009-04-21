@@ -95,8 +95,9 @@
 	padding: 7px;
 }
 .tag_form input[type=submit] {
-	background-color: black;
-	color: green;
-	width:5em ;
+	background-color: #9E9E9E;
+	color: black;
+	border:none;
+	width:7em ;
 	padding: 7px;
 }
