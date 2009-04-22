@@ -1,4 +1,4 @@
-HOST = 'www.bookup.org'
+HOST = 'beta.bookup.org'
 DO_NOT_REPLY = "root@bookup.org"
 
 # Specifies gem version of Rails to use when vendor/rails is not present
