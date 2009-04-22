@@ -12,12 +12,14 @@
 </head>
 
 <body>		 
+	<div style='position:absolute;top:0;left:0;background-color:grey;color:black;font-size:20pt;'>
+		<h1>Beta Sandbox. this is not the real bookup! </h1>
+		<p><%= link_to "BookUp home" , root_url%>
+	</div><!--end -->
 	<div id="header">
-		<%= link_to image_tag("bookup_logo.png"), root_url %>
 		<%= render :partial => '/sessions/session_bar'%>
 	</div><!--end header-->
 	<div id="info_bar">
- 		<p style='margin-top:10px;'><%= link_to_function "This is a beta release. Click this before using.","$('#waiting_divs').toggle();",:style => 'color:white'%></p>
 		<%= render :partial => 'global/flash', :locals => { :flash => flash }%>
 	</div><!--end info_bar-->
 	<div id="container">
