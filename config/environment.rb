@@ -37,7 +37,8 @@ Rails::Initializer.run do |config|
   require 'isbn/tools'
 
 end
-#Rubaidh::GoogleAnalytics.tracker_id = "UA-8299171-1"
+Rubaidh::GoogleAnalytics.tracker_id = "UA-8299171-1"
+Rubaidh::GoogleAnalytics.environments = ['development'] 
 AmazonProducts.config_location = 'config/amazon.yml'
 ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.merge!(:default => '%m/%d/%Y')
 ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:default => '%m/%d/%Y')
