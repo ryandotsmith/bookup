@@ -18,7 +18,7 @@
 					<td><%= book.edition %></td>
 					<td><%= book.isbn %></td>
 					<td><%= book.active_listings.count %></td>
-					<td><%= "%.2f" % book.average_price %></td>
+					<td><%="$" + "%.2f" % book.average_price %></td>
 				</tr>
 			<% end %>
 		<% end %>
