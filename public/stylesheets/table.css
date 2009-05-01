@@ -74,7 +74,7 @@ table.books_index {
 	border-bottom:2px dotted black;
 	width:800px;
 	font-family:helvetica;
-	font-size:16pt;
+	font-size:12pt;
 }
 table.books_index caption {
 	padding:4px;
@@ -91,7 +91,7 @@ table.books_index tbody td {
 	padding:6px;
 	background-color: #FFF;
 	height:2em;
-	max-width:6em;
+	max-width:7em;
 }
 table.books_index tbody tr.discipline td{
 	background-color:red;
