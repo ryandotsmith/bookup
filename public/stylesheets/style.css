@@ -50,7 +50,6 @@ h3 a:hover {
 }
 #session_bar {
 	width:300px;
-	height:90px;
 	float:right;
 	margin-top:14px;
 	margin-right:6em;
@@ -92,11 +91,8 @@ h3 a:hover {
 }
 #container {
 	position:absolute;
-	background-image:url(/images/bookup_background.png);
-	background-repeat:no-repeat;
 	background-color:#fff;
 	width:900px;
-	height:800px;
 	margin-top:110px;
 	margin-left:10%;
 	margin-right:5%
@@ -105,7 +101,6 @@ h3 a:hover {
 	background-color:#fff;
 	width:800px;
 	height:600px;
-	margin-top:0.7em;
 	margin-left:3em;
 	margin-right:3em;
 }
@@ -167,7 +162,6 @@ h3 a:hover {
 	background-color:#F19B51;
 	top:0;
 	left:0;
-	margin-top:10px;
 	margin-left:45px;
 	width:800px;
 	height:75px;
@@ -194,14 +188,14 @@ h3 a:hover {
 	font-size:16pt;
 }
 #show_tags_link  {
+	top:-20;
 	background-color:#F19B51;
 	color:#5B7DE3;
 	padding:5px;
 	text-decoration:none;
 	text-align:center;
 	width:100px;
-	margin-left:auto;
-	margin-right:auto;
+	margin:0 auto;
 }
 #show_tags_link a {
 	text-decoration:none;

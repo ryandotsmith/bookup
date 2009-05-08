@@ -4,7 +4,7 @@
 require 'capistrano/ext/multistage'
 set :stages, %w(production staging)
 set( :application ) { "bookup_#{ stage }" }
-set( :deploy_to) { "/home/rsmith/app/#{application}" }
+set( :deploy_to)    { "/home/rsmith/app/#{application}" }
 
 #############################################################
 #	Settings

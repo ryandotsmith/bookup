@@ -1,9 +1,10 @@
 <div id="center">
 
+	<%= render :partial => 'book_tags', :locals => { :book => @book }%>
+
 	<div id="image" style='float:right'>
 		<%= image_tag("#{ @book.img_url }")%>
 	</div><!--end image-->
-	<%= render :partial => 'book_tags', :locals => { :book => @book }%>
 
 	<h1><%=  @book.title %></h1>
 	<h2>
