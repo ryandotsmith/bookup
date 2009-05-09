@@ -127,6 +127,7 @@ a {
 	height:22px;
 	text-align:center;
 	margin-left:3em;
+	margin-bottom:10px;
 	background-image:url(/images/number.png);
 	background-repeat:no-repeat;
 	font-weight:bold;
@@ -136,6 +137,7 @@ a {
 	height:22px;
 	text-align:center;
 	margin-left:3em;
+	margin-bottom:10px;
 	background-image:url(/images/number_buy.png);
 	background-repeat:no-repeat;
 	font-weight:bold;
