@@ -10,6 +10,7 @@ $(document).ready( function() {
 	$(".formError").corners();
 	$("#tag_list li").corners('10px');
 	$("#show_tags_link").corners('bottom 10px');
+	$('#average_price_text').corners();
 	// Books#edit 
 		$('input.autocomplete').each(function(){
 	    var input = $(this);

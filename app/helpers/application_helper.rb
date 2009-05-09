@@ -10,7 +10,7 @@ module ApplicationHelper
   ####################
   #get_css
   def get_css
-    ['style','humanity','tablesorter','table','form','list','jquery.autocomplete']
+    ['home','style','humanity','tablesorter','table','form','list','jquery.autocomplete']
   end#get_css
   ####################
   #get_js

@@ -1,0 +1,175 @@
+body {
+	background-color:#5C7EE6;
+	font-family:helvetica;
+}
+h1 {
+	padding:0;
+	margin:0;
+	text-align:center;
+	font-size:15pt;
+	color:#181721;
+}
+h2 a {
+	color:#181721;
+	font-size:14pt;	
+}
+h2 {
+	padding:0;
+	margin:0;
+	color:#181721;
+}
+h3{
+	padding:0;
+	margin:0 auto;
+	color:#242424;
+	font-size:10pt;
+}
+a {
+	color:#242424;
+}
+#header {
+	position:absolute;
+	margin-top:0;
+	width:900px;
+	height:110px;
+	margin-left:10%;
+	margin-right:5%;
+	padding-left:3em;	
+}
+#header img{
+	float:left;
+	border-style: none;
+}
+#session_bar {
+	width:300px;
+	float:right;
+	margin-top:14px;
+	margin-right:6em;
+	padding-left:5px;
+	background-color:#2A211C;
+}
+#session_bar ul {
+	height:60%;
+	font-size:12pt;
+	list-style:none;
+	margin-top:5px;
+	margin-left:0;
+	padding-left:0;
+	background-color:#2A211C;
+}
+#session_bar li {
+	text-align:left;
+	color:white;
+}
+#session_bar li a {
+	font:arial;
+	color:white;
+	text-decoration:none;
+}
+#session_bar li a:hover {
+	font:arial;
+	color:yellow;
+	text-decoration:none;
+}
+#container {
+	position:absolute;
+	background-color:#fff;
+	width:900px;
+	margin-top:110px;
+	margin-left:10%;
+	margin-right:5%
+}
+#center {
+	background-color:#fff;
+	margin:0 auto;
+}
+.l {
+	width:400px;
+	height:150px;
+	float:left;
+}
+.r {
+	width:400px;
+	height:150px;
+	float:right;
+}
+.left_third {
+	width:250px;
+	height:150px;
+	margin-left:5px;
+	float:left;
+}
+#how_to {
+	width:100%;
+	height:200px;
+	background-color:#FDF3D9;
+	margin:0 auto;
+	font-family:georgia;
+}
+
+#how_to ul {
+	padding-left:0;
+	margin-left:0;
+}
+#how_to li {
+	font-size:10pt;
+	width:120px;
+	padding-left:10px;
+	float:left;
+	list-style:none;
+}
+#how_to img {
+	margin-left:3em;
+	margin-bottom:10px;
+}
+.number {
+	width:22px;
+	height:22px;
+	text-align:center;
+	margin-left:3em;
+	background-image:url(/images/number.png);
+	background-repeat:no-repeat;
+	font-weight:bold;
+}
+.number_buy {
+	width:22px;
+	height:22px;
+	text-align:center;
+	margin-left:3em;
+	background-image:url(/images/number_buy.png);
+	background-repeat:no-repeat;
+	font-weight:bold;
+}
+
+#average_price {
+	background-color:#3BE18D;
+	width:100%;
+	height:80px;
+	clear:both;
+	text-align:center;
+	padding-top:50px;
+}
+#average_price_text {
+	width:20em;
+	margin:0 auto;
+	padding:10px;
+	font-size:14pt;
+	font-weight:bold;
+	background-color:#93CBEF;	
+	color:#B96823;
+	border:2px solid #F69F8C;
+}
+#book_list {
+	background-color:#FBB03B;
+	width:100%;
+	height:80px;
+	clear:both;
+	text-align:center;
+	padding-top:50px;
+}
+#footer {
+	width:100%;
+	height:200px;
+	background-color:#8A8275;
+	font-family:georgia;
+}
