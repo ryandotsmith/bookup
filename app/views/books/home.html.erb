@@ -43,7 +43,7 @@
 
 	<div id="average_price">
 			<div id="average_price_text">
-				Average Book Price: $<%= Book.average_price()%>
+				Average Book Price: <%="$" + "%.2f" % Book.average_price()%>
 			</div><!--end average_price_text-->
 	</div><!--end average_price-->
 
