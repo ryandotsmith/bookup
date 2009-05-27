@@ -1,22 +1,18 @@
 <div id="center">
-<ul class='form'>
+	<h2>Add a new book</h2>
 	<%= error_message_on @book, :isbn %>
 	<% form_for @book , :html => {:class => 'new_book_form'} do |f| %>
-			<p style='font-size:12pt;color:#2A211C;width:400px'>
-				Enter the ISBN number of the book you wish to add. Wait for the title of the supposed book
-				to show above the submit button. If this is indeed to book you wish to add, press submit.
-			</p>
-		  <li>ISBN</li>
-	    <li><%= f.text_field :isbn, :autocomplete => 'off' %> <%= image_tag("spinner.gif", :id => 'spinner', :style => "display:none")%></li>
-			<li><div id="suggestion"></div><!--end suggestion--></li>
-	    <li><%= f.submit "submit" %></li>
+		  <%= f.label :isbn, "ISBN" %>
+	    <%= f.text_field :isbn, :autocomplete => 'off' %>
+
+			<div id="suggestion"></div><!--end suggestion-->
+	    <%= f.submit "add book" %></li>
 	<% end %>	
-</ul>	
 
 <%= observe_field "book_isbn", :url => 	{ :controller => 'books', :action => 'lookup' },
 													:frequency 	=> 0.25,
-													:loading		=> "$('#spinner').appear();",
-													:complete		=> "$('#spinner').fade();",
+													:loading		=> "$('#book_isbn').addClass('loading');",
+													:complete		=> "$('#book_isbn').removeClass('loading');",
 													:update			=> 	:suggestion,
 													:with				=>	'isbn' %>
 

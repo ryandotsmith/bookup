@@ -1,0 +1,39 @@
+/**/
+#suggestion {
+	width:100%;
+	margin:0 auto;
+	background-color:#7ACB7A;
+}
+#suggestion p {
+	padding:10px;
+	margin:5px;
+}
+
+
+
+
+form {
+	padding:4em;
+}
+fieldset{
+	background:#F2F2F2 none repeat scroll 0 0	;
+	border:none;
+}
+label {
+	font-weight:bold;
+	font-size:8pt;
+	width:100px;
+}
+input[type=text] {
+	width:100%;
+	font-size:26px;	
+}
+input[type=text].loading {
+	width:100%;
+	font-size:26px;
+	background-image:url(/images/spinner.gif);
+	background-repeat:no-repeat;
+	background-position:right;
+}
+input[type=submit] {
+}

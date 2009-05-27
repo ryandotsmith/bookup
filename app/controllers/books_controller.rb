@@ -58,9 +58,9 @@ class BooksController < ApplicationController
     @book = Book.new(:isbn => isbn)
     if @book.scrub_isbn()
       @book.fetch_attrs_from_amazon()
-      render :text => "#{@book.title}"
+      render :text => "<p>#{@book.title}</p>"
     else
-      render :text => "could not find book with that ISBN"
+      render :text => "<p>could not find book with that ISBN</p>"
     end
   end#lookup
 
