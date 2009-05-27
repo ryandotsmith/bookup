@@ -7,11 +7,11 @@ module ApplicationHelper
     @user = current_user
   end#logged_in?
 
-  ####################
-  #get_css
-  def get_css
-    ['home','style','humanity','tablesorter','table','form','list','jquery.autocomplete']
+  def get_css( controller )
+    [controller.controller_name, 'application','jquery.autocomplete','humanity']
   end#get_css
+
+
   ####################
   #get_js
   def get_js

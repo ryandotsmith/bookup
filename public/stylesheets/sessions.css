@@ -1,0 +1,28 @@
+form {
+	
+}
+fieldset{
+	background:#F2F2F2 none repeat scroll 0 0	;
+	border:none;
+}
+label {
+	display:block;
+	font-size:8pt;
+	width:100px;
+}
+input {
+	width:90%;
+	padding:5px;
+	font-size:24px;
+}
+.buttons input {
+	width:120px;
+	height:46px;
+}
+.buttons a  {
+	color:#333333;
+	vertical-align:middle;
+	font-size:12px;
+	padding-bottom:50px;
+	padding-left:5px;
+}

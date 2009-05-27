@@ -1,0 +1,20 @@
+form {
+}
+fieldset{
+	background:#F2F2F2 none repeat scroll 0 0	;
+	border:none;
+}
+label {
+	text-align:right;
+	display:inline-block;
+	font-weight:bold;
+	font-size:8pt;
+	width:100px;
+}
+input {
+	width:30%;
+	font-size:16px;
+}
+input[type=submit] {
+	width:100px;
+}
