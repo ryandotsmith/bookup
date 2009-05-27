@@ -1,7 +1,6 @@
 <div id="center">
 	<h2>Sign up</h2>
-	<% form_for @user, :html => { :class => 'user_form' } do |form| %>
-		
+	<% form_for @user do |form| %>		
 		<fieldset>
 	  <%= render :partial => '/users/form', :object => form %>
 	  <%= form.submit 'Sign up', :disable_with => 'Please wait...' %>			

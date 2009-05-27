@@ -2,11 +2,13 @@
 	<h2>Add a new book</h2>
 	<%= error_message_on @book, :isbn %>
 	<% form_for @book , :html => {:class => 'new_book_form'} do |f| %>
+		<fieldset>
 		  <%= f.label :isbn, "ISBN" %>
 	    <%= f.text_field :isbn, :autocomplete => 'off' %>
 
 			<div id="suggestion"></div><!--end suggestion-->
 	    <%= f.submit "add book" %></li>
+		</fieldset>
 	<% end %>	
 
 <%= observe_field "book_isbn", :url => 	{ :controller => 'books', :action => 'lookup' },

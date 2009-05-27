@@ -1,4 +1,4 @@
-/**/
+/* structure */
 #suggestion {
 	width:100%;
 	margin:0 auto;
@@ -9,31 +9,26 @@
 	margin:5px;
 }
 
-
-
-
+/****     structure       ****/
 form {
-	padding:4em;
-}
-fieldset{
-	background:#F2F2F2 none repeat scroll 0 0	;
-	border:none;
+	padding:0 0 4em;
 }
 label {
-	font-weight:bold;
+	display:block;
 	font-size:8pt;
 	width:100px;
 }
 input[type=text] {
-	width:100%;
+	width:90%;
 	font-size:26px;	
 }
 input[type=text].loading {
-	width:100%;
-	font-size:26px;
+	width:90%;
+	font-size:26px;	
 	background-image:url(/images/spinner.gif);
 	background-repeat:no-repeat;
 	background-position:right;
 }
 input[type=submit] {
+	margin:10px 0 auto ;
 }

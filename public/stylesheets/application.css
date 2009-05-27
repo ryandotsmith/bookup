@@ -205,6 +205,32 @@ h3 a:hover {
 
 /*        FORMS            */
 
+/* Standard From */
+.session form {
+	padding:0 0 4em;
+}
+fieldset{
+	background:#F2F2F2 none repeat scroll 0 0	;
+	border:none;
+	padding:20px;
+
+}
+.session label {
+	display:block;
+	font-weight:bold;
+	font-size:8pt;
+}
+.session input {
+	width:90%;
+	font-size:26px;	
+}
+.session input[type=checkbox] {
+	width:20px;
+}
+.buttons input {
+	width:120px;
+	height:46px;
+}
 /* Form for book tags */
 .tag_form label {
 	float: none;
