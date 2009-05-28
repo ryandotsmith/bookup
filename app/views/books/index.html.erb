@@ -1,29 +1,40 @@
+<div id="left">
+	<%= render :partial => '/sessions/session_bar'%>
+</div><!--end left-->
+
 <div id="center">
 	<% @books_hash.each do |tag,books| %>
-	<table class ='books_index'>
-		<caption><%= tag %></caption>
-		<thead>
-			<tr>
-				<th>Title</th>
-				<th>Edition</th>
-				<th>ISBN</th>				
-				<th>Copies For Sale</th>
-				<th>Average Price</th>				
-			</tr>
-		</thead>
-		<tbody>		
+			<%= tag %>
 			<% books.each do |book|%>
-				<tr>
-					<td><%= link_to "#{ shorten book.title }", book %></td>
-					<td><%= book.edition %></td>
-					<td><%= book.isbn %></td>
-					<td><%= book.active_listings.count %></td>
-					<td><%="$" + "%.2f" % book.average_price %></td>
-				</tr>
+				<div class="book">
+					<%= link_to image_tag( "#{ book.img_url }", :size => '100x100' ), book ,:class => 'book_cover'%>						
+					<table>
+						<tbdoy>
+
+						  <tr>
+						    <td><strong><%= link_to book.title, book %></strong></td>
+							</tr>
+
+						  <tr>
+								<td><a class='price_tag'><%="$" + "%.2f" % book.average_price %></a></td>
+							</tr>
+
+							<tr>
+						    <td><%= book.edition %></td>
+						  </tr>
+
+							<tr>
+						    <td><%="ISBN: " + book.isbn %></td>
+						  </tr>
+
+							<tr>
+						    <td><%= pluralize book.active_listings.count, "listing" %></td>
+						  </tr>
+						</tbody>
+					</table>
+				</div><!--end book-->
 			<% end %>
 		<% end %>
-	</tbody>
-	</table>
 	<p> 
 		Have a book that is not on the list? <br />
 		<%= link_to "add it to the list", new_book_path %>

@@ -5,8 +5,9 @@ class BooksController < ApplicationController
 
   def autocomplete_tag_list
     @tags = Book.suggest_tags( params )
-    render :inline => @tags
+    render :inline => @tags.join("\n")
   end
+
   def home
     render :layout => 'home'
   end
