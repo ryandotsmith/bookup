@@ -1,6 +1,6 @@
 $(document).ready( function() {
 	$("#average_book_price").corners('10px')
-	$("#flash_success, #flash_failure, #flash_notice").corners('bottom')
+	$("#flash_success, #flash_failure, #flash_notice").corners('top 10px')
 	$(".formError").corners();
 	$("#tag_list li").corners('10px');
 	$("#show_tags_link").corners('bottom 10px');

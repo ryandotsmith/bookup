@@ -1,26 +1,26 @@
 <div id="session_bar">
-<ul>
-<% if logged_in? %>
 
-	<li> 
-		<%= current_user.email %> 
-	</li>
-	
-	<li> 
-		<%= link_to "your listings ( #{ current_user.get_active_listings.length } )",user_listings_path(current_user)%>
-	</li>
-	
-	<li>
-		<%= link_to "sign out", { :controller 	=> 'sessions', 
-													 		:action 			=> 'destroy'}, 
-															:method 			=> :delete    %>
-	</li>
+<% if logged_in? %>
+	<h2><%= current_user.name%></h2> 
 <% else %>
-	<li>
-	<%= link_to "sign in", { 	:controller 	=> 'sessions', 
-												 		:action 			=> 'new' } %>
-	</li>
+	<h2><%= link_to "Sign In", new_session_path %></h2>
 <% end %>
 
-</ul>
+<% if logged_in? %>
+	<ul>
+		<li> 
+			<%= link_to "your listings ( #{ current_user.get_active_listings.length } )",user_listings_path(current_user)%>
+		</li>	
+		<li>
+			<%= link_to "sign out", { :controller 	=> 'sessions', 
+														 		:action 			=> 'destroy'}, 
+																:method 			=> :delete    %>
+		</li>
+	</ul>
+<% else %>
+	<span>
+		Before you can buy, trade or sell, you'll need to <%= link_to "sign up", new_user_path %>!
+	</span>
+<% end %>
+
 </div><!--end session_bar-->

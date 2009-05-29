@@ -61,7 +61,7 @@ class BooksController < ApplicationController
       @book.fetch_attrs_from_amazon()
       render :text => "<p>#{@book.title}</p>"
     else
-      render :text => "<p>could not find book with that ISBN</p>"
+      render :text => "<p>could not find a book with that ISBN</p>"
     end
   end#lookup
 
