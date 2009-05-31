@@ -7,16 +7,21 @@
 <% end %>
 
 <% if logged_in? %>
-	<ul>
-		<li> 
-			<%= link_to "your listings ( #{ current_user.get_active_listings.length } )",user_listings_path(current_user)%>
-		</li>	
-		<li>
-			<%= link_to "sign out", { :controller 	=> 'sessions', 
-														 		:action 			=> 'destroy'}, 
-																:method 			=> :delete    %>
-		</li>
-	</ul>
+	<table>
+	<tbdoy>
+	  <tr>
+	    <td><%= link_to "your listings",user_listings_path(current_user)%></td>
+	  </tr>
+	  <tr>
+			<td>
+				<%= link_to "sign out", { :controller 	=> 'sessions', 
+															 		:action 			=> 'destroy'}, 
+																	:method 			=> :delete    %>	
+			</td>
+	  </tr>
+
+	</tbody>
+	</table>
 <% else %>
 	<span>
 		Before you can buy, trade or sell, you'll need to <%= link_to "sign up", new_user_path %>!

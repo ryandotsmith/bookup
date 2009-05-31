@@ -1,25 +1,22 @@
-<table id='show_book_listings_table' class='tablesorter'>
+<table class='data'>
 <thead>
   <tr>
+		<th>update</th>
 		<th>Book</th>
 	  <th>Status</th>
 		<th>Price</th>
 	  <th>Listing Date</th>  
-		<th>Comment</th>
-		<th>update</th>
   </tr>
 </thead>
 <tbdoy>
 	<% listings.each do |listing| %>
   <tr>
+    <td><%= link_to "update",edit_user_listing_url(listing.user.id,listing.id) %></td>  
 		<td><%= shorten listing.book.title %></td>
 		<td><%= get_market_status( listing ) %></td>
-		<td><%= "$" + listing.price.to_s %>
+		<td><%= dollar_sign listing.price.to_s %>
     <td><%= listing.created_at.to_s %></td>
-    <td><%= listing.comment %></td>
-    <td><%= link_to "update",edit_user_listing_url(listing.user.id,listing.id) %></td>  
   </tr>
 	<% end %>			
-
 </tbody>
 </table>

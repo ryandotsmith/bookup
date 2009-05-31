@@ -33,6 +33,9 @@ h3 a:hover {
 span {
 	font-size:13px;
 }
+a {
+	color:#363636;
+}
 /*			Structure				*/
 #header {
 	width:100%;
@@ -78,6 +81,9 @@ span {
 	margin:0;
 	padding:2px;
 }
+#center h2 a {
+	font-size:12px;
+}
 #center h3 {
 	margin:0;
 	padding:2px;
@@ -99,7 +105,6 @@ span {
 	margin-left:0;
 	background:#C5656B;
 }
-
 #red_ex {
 	background-color:red;
 	float:left;

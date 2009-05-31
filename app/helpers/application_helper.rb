@@ -37,6 +37,11 @@ module ApplicationHelper
     return short_attr = attr[0..24] + "... " if attr.length >= 24
     attr
   end#shorten
+
+  def dollar_sign( number )
+    "$" + "%.2f" % number 
+  end
+
   def clippy(text, bgcolor='#FFFFFF')
     html = <<-EOF
       <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"

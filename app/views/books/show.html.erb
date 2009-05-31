@@ -1,27 +1,34 @@
 <div id="center">
 
-	<%= render :partial => 'book_tags', :locals => { :book => @book }%>
-
-	<div id="image" style='float:right'>
+	<div id="image" style='float:left'>
 		<%= image_tag("#{ @book.img_url }")%>
 	</div><!--end image-->
 
-	<h1><%=  @book.title %></h1>
-	<h2>
-		<a><%= @book.edition %> <%= "edition" if @book.edition.length > 1 %></a>
-		<br />
-		<a>ISBN: <%= @book.isbn %></a>  
-		<br />
-		<a>Amazon List Price: <%= @book.list_price %></a>
-		<br />
-		<a>Amazon Used Price:</a>
-	</h2>
-
+	<h2><%=  @book.title %></h2>
 	<h3>
 		<a style='color:orange'>*</a>
 		<%= link_to "sell your copy", new_book_listing_path(@book)%>
 		<br />
 	</h3>
+		<table>
+		<tbdoy>
+		  <tr>
+		    <td><strong>Edition</strong></td>
+		    <td><%= @book.edition %></td>
+		  </tr>
+		  <tr>
+		    <td><strong>ISBN</strong></td>
+		    <td><%= @book.isbn %></td>
+		  </tr>
+		  <tr>
+		    <td><strong>Amazon List Price</strong></td>
+		    <td><%= @book.list_price %></td>
+		  </tr>
+		</tbody>
+		</table>
+		<br />
+		<br />
+		<br />
 	<% if @book.listings.count != 0 %>
 		People selling this book:	
 		<%= render :partial => 'listings/book_listings', :locals => { :book => @book } %>

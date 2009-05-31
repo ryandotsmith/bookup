@@ -18,3 +18,11 @@ input[id=listing_price] {
 	font-size:26px;	
 	width:120px;
 }
+table.data  {
+	width:90%;
+}
+.data tr {
+}
+.data td {
+	text-align:center;
+}
