@@ -1,20 +1,28 @@
+<div id="left">
+	<%= render :partial => '/sessions/session_bar'%>
+	
+</div><!--end left-->
+
+
 <div id="center">
 
-	<div id="image" style='float:left'>
+	<h2>
+		<%=  @book.title %>
+		<br />
+		<%= link_to "back to the books", books_url	%>
+	</h2>
+
+	<div id="image">
 		<%= image_tag("#{ @book.img_url }")%>
 	</div><!--end image-->
-
-	<h2><%=  @book.title %></h2>
-	<h3>
-		<a style='color:orange'>*</a>
+	
+	<div id="details">
 		<%= link_to "sell your copy", new_book_listing_path(@book)%>
-		<br />
-	</h3>
 		<table>
 		<tbdoy>
 		  <tr>
 		    <td><strong>Edition</strong></td>
-		    <td><%= @book.edition %></td>
+		    <td><%= n_a_ify @book.edition %></td>
 		  </tr>
 		  <tr>
 		    <td><strong>ISBN</strong></td>
@@ -26,11 +34,13 @@
 		  </tr>
 		</tbody>
 		</table>
-		<br />
-		<br />
-		<br />
-	<% if @book.listings.count != 0 %>
-		People selling this book:	
-		<%= render :partial => 'listings/book_listings', :locals => { :book => @book } %>
-	<% end %>
+	</div><!--end details-->
+
+	<div id="listings">
+		<% if @book.listings.count != 0 %>
+			<h3>listings</h3>
+			<%= render :partial => 'listings/book_listings', :locals => { :book => @book } %>
+		<% end %>			
+	</div><!--end listings-->
+
 </div><!--end center-->

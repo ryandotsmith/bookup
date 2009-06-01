@@ -36,6 +36,15 @@ span {
 a {
 	color:#363636;
 }
+table.listings {
+	width:100%;
+}
+.listings td {
+	padding:3px;
+}
+table {
+	height:100%;
+}
 /*			Structure				*/
 #header {
 	width:100%;
@@ -49,8 +58,6 @@ a {
 
 #container {
 	position:absolute;
-	width:100%;
-	height:100%;
 	margin-top:2%;
 	margin-left:2%;
 }

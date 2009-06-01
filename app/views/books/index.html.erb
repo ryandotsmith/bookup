@@ -12,15 +12,16 @@
 <div id="center">
 	<h2>Awesome Deals<br /></h2>
 	<% @books_hash.each do |tag,books| %>
-			<h3><%= tag %></h3>
+			<div>
+				<h3><%= tag %></h3>
+			</div><!--end -->
 			<% books.each do |book|%>
 				<div class="book">
 					<%= link_to image_tag( "#{ book.img_url }", :size => '100x100' ), book ,:class => 'book_cover'%>						
 					<table>
-						<tbdoy>
-
+						<tbody>
 						  <tr>
-						    <td><strong><%= link_to book.title, book %></strong></td>
+						    <td><strong><%= shorten link_to( book.title, book), 60 %></strong></td>
 							</tr>
 
 						  <tr>
@@ -28,11 +29,11 @@
 							</tr>
 
 							<tr>
-						    <td><%= book.edition %></td>
+						    <td><%= n_a_ify book.edition %></td>
 						  </tr>
 
 							<tr>
-						    <td><%="ISBN: " + book.isbn %></td>
+						    <td><%= book.isbn %></td>
 						  </tr>
 
 							<tr>
@@ -40,6 +41,7 @@
 						  </tr>
 						</tbody>
 					</table>
+
 				</div><!--end book-->
 			<% end %>
 		<% end %>

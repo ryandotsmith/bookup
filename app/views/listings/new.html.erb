@@ -1,5 +1,6 @@
 <div id="center">
-	<h2>Sell your copy of "<%= @book.title %>" </h2>
+	<h2><%= @book.title %> </h2>
+	<h3> Sell your copy </h3>
 	<% form_for [@book,@listing] do |f|%>
 	<fieldset>
 			<%= render :partial => 'listings/form', :locals => { :f => f } %>
