@@ -7,7 +7,7 @@
 	<h2>Categories</h2>
 	<ul>
 		<li><%= link_to "All Categories", books_url %></li>
-	<% Book.discipline_counts.each do |discipline|%>
+	<% Book.discipline_counts.sort {|a,b| a.name  <=> b.name }.each do |discipline|%>
 		<li><%= link_to discipline, books_url( :q => 'discipline', :q_selection => discipline.name ) %></li>
 	<% end %>
 	<ul>
