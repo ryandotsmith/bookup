@@ -103,7 +103,7 @@ a {
 	height:200px;
 	background-color:#F2F2F2;
 	margin:0 auto;
-	font-family:georgia;
+	font-family:arial;
 }
 
 #how_to ul {
@@ -182,6 +182,6 @@ a {
 #footer {
 	width:100%;
 	height:200px;
-	background-color:#8A8275;
-	font-family:georgia;
+	background-color:#BCC5E3;	
+	font-family:arial;
 }
