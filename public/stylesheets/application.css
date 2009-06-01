@@ -45,6 +45,9 @@ table.listings {
 table {
 	height:100%;
 }
+img {
+	border:none;
+}
 /*			Structure				*/
 #header {
 	width:100%;
