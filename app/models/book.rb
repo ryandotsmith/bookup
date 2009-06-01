@@ -98,7 +98,7 @@ class Book < ActiveRecord::Base
     Book.find(:all).each do |book|
       next if book.average_price() == 0.0
       sum += book.average_price()
-      n += 1
+      n   += 1
     end
     return(sum/n) if n != 0
     n.to_f
@@ -110,7 +110,7 @@ class Book < ActiveRecord::Base
     n   = 0
     listings.each do |listing|
       sum += listing.price
-      n+=1
+      n   += 1
     end
     return(sum/n) if n != 0
     n.to_f

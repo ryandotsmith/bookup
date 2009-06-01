@@ -1,0 +1,69 @@
+<div id="center">
+
+	<div id="how_to">
+
+			<div id='sell' class="l">
+				<h1>How to sell your book. </h1>
+			<ul>
+				<li>
+					<div class='number'>1</div>
+					Find a book on the list. If your book is not on the list,<br/> <%= link_to "add it!", new_book_path%>
+				</li>
+				<li>
+					<div class='number'>2</div>
+					Once you found or created your book, make a personalized listing.
+				</li>
+				<li>
+					<div class='number'>3</div>
+					Wait for a fellow student to email you, then meet on campus. . . or Muddy's
+				</li>
+			</ul>				
+			</div><!--end left-->
+			
+			<div id='buy'class="r">
+				<h1>How to buy a book.</h1>
+				<ul>
+					<li>
+						<div class='number_buy'>1</div>
+						Find a book on the list.
+					</li>
+					<li>
+						<div class='number_buy'>2</div>
+						Email the seller of the book.
+					</li>
+					<li>
+						<div class='number_buy'>3</div>
+						Meet on campus or The Roasterie to pick up your new textbook!
+					</li>
+				</ul>				
+			</div><!--end left-->
+
+	</div>
+
+
+	<div id="average_price">
+			<div id="average_price_text">
+				Average Book Price: <%="$" + "%.2f" % Book.average_price()%>
+			</div><!--end average_price_text-->
+	</div><!--end average_price-->
+
+	<div id="book_list">
+		<h2><%= link_to "The Book List", books_url %></h2>
+	</div><!--end book_list-->
+
+	<div id="footer">
+		<div id="about" class='left_third'>
+			<h3>About</h3>
+			<%= render :partial => 'docs/about' %>
+		</div><!--end about-->
+		<div id="tft" class='left_third'>
+			<h3>Sponsor</h3>
+			<%= render :partial => 'docs/tft'%>
+		</div><!--end tft-->
+		<div id="hire" class='left_third'>
+			<h3>Jobs</h3>
+			<%= render :partial => 'docs/career'%>
+		</div><!--end hire-->
+	</div><!--end footer-->
+
+</div><!--end center-->

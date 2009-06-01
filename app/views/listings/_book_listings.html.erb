@@ -1,4 +1,4 @@
-<table id='show_book_listings_table' class='tablesorter'>
+<table class='listings'>
 <thead>
   <tr>
 	  <th>Status</th>
@@ -12,7 +12,7 @@
 	<% book.listings.each do |listing|%>
   <tr>
     <td><%= get_market_status( listing )%></td>  
-		<td><%= "$" + listing.price.to_s %></td>  
+		<td><%= dollar_sign listing.price.to_s %></td>  
     <td><%= listing.created_at.to_s %></td>  
 		<% if logged_in? %>
 		<td><%= listing.user.email %></td>

@@ -3,12 +3,15 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>BookUp <%= controller.action_name %></title>
-	<% get_css.each do |sheet| %>
+
+	<% get_css(controller).each do |sheet| %>
 		<%= stylesheet_link_tag sheet %>
 	<% end %>
+
 	<% get_js.each do |js|%>
 		<%= javascript_include_tag js %>
 	<% end%>
+
 </head>
 
 <body>		 
@@ -16,27 +19,19 @@
 		<h1>Beta Sandbox. this is not the real bookup! </h1>
 		<p><%= link_to "BookUp home" , root_url%>
 	</div><!--end -->
+
 	<div id="header">
-		<%= render :partial => '/sessions/session_bar'%>
+		<%= link_to image_tag("bookup_logo.png"), root_url %>
 	</div><!--end header-->
-	<div id="info_bar">
-		<%= render :partial => 'global/flash', :locals => { :flash => flash }%>
-	</div><!--end info_bar-->
 	<div id="container">
+		<div id="info_bar">
+			<%= render :partial => 'global/flash', :locals => { :flash => flash }%>			
+		</div><!--end info_bar-->
 		<%= yield  %>		
+
 		<div id="waiting_divs" style='display:none'>
-			<div id="beta_warning">
-				<h2>Bookup is designed to help the students of UMKC save money.</h2>
-				<p>If you have a text book add it to the list and then create a listing to sell or trade it.</p>
-				<p>Also, if you are interested in the development of this application, please email me:
-					<a href="mailto:this.ryansmith@gmail.com">this.ryansmith@gmail.com</a> and visit my blog <a href="http://www.ryan-smith.org">www.ryan-smith.org</a></p>
-				<p>Finally, this software is well tested however it is in beta. This means that some features 
-					are not yet implemented and there may be bugs. Please let me know if you find a bug.</p>
-				<p>Thanks, Ryan Smith. </p>
-					<p><%= link_to_function "close",
-							"$('#waiting_divs').toggle();",:style => 'color:white'	%></p>
-			</div><!--end creat_listing-->
 		</div><!--end waiting_divs-->
+
 	</div><!--end container-->
 </body>
 </html>

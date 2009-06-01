@@ -1,0 +1,298 @@
+/*			Atoms				*/
+body {
+	font-family:helvetica;
+	padding:0;
+	margin:0;
+}
+h1 {
+	clear:left;
+	font-size:18pt;
+	color:#363636;
+}
+h1 a {
+	font-size:18pt;
+	color:#363636;
+}
+h2 {
+	margin-top:20px;
+	font-size:22px;
+	color:#363636;
+}
+h3 {
+	font-size:12pt;
+	color:#363636;
+}
+h3 a {
+	color:#363636;
+	text-decoration:none;
+}
+h3 a:hover {
+	color:green;
+	border-bottom:1px solid yellow;
+}
+span {
+	font-size:13px;
+}
+a {
+	color:#363636;
+}
+table.listings {
+	width:100%;
+}
+.listings td {
+	padding:3px;
+}
+table {
+	height:100%;
+}
+/*			Structure				*/
+#header {
+	width:100%;
+	height:110px;
+}
+#header img{
+	float:left;
+	border-style: none;
+	margin-left:2%;
+}
+
+#container {
+	position:absolute;
+	margin-top:2%;
+	margin-left:2%;
+}
+#left {
+	width:200px;
+	float:left;
+	background-color:#F2F2F2;
+
+}
+#left h2 {
+	color:black;
+	background-color:#BCC5E3;	
+	font-family:arial;
+	font-size:18px;
+	margin:0;
+	padding:2px;
+}
+#center {
+	width:700px;
+	margin-left:230px;
+	background-color:#F2F2F2;
+}
+#center h2 {
+	color: black;
+	background-color:#BCC5E3;	
+	font-family:arial;
+	font-size:18px;
+	margin:0;
+	padding:2px;
+}
+#center h2 a {
+	font-size:12px;
+}
+#center h3 {
+	margin:0;
+	padding:2px;
+	width:90%;
+	color: black;
+	background-color:#E3D7BC;	
+	font-family:arial;
+	font-size:15px;
+}
+
+
+/****   Site Wide novelties     ****/
+#info_bar {
+	margin-left:230px;
+	width:700px;
+}
+.formError {
+	padding:10px;
+	margin-left:0;
+	background:#C5656B;
+}
+#red_ex {
+	background-color:red;
+	float:left;
+}
+#flash_failure {
+	color:#1F1F1F;
+	padding:6px;
+	margin-top:4px;
+	background:#E57872;
+}
+#flash_success {
+	color:#1F1F1F;
+	padding:6px;
+	margin-top:4px;
+	background:#ADE6A4;
+}
+#flash_notice {
+	color:#1F1F1F;
+	padding:6px;
+	margin-top:4px;
+	background:#E2CB5D;
+}
+#tag_list {
+	position:absolute;
+	background-color:#F19B51;
+	top:0;
+	left:0;
+	margin-left:45px;
+	width:800px;
+	height:75px;
+}
+#edit_button {
+	position:absolute;
+	bottom:0;
+	right:0;
+	margin-right:5px;
+	margin-bottom:5px;
+}	
+#edit_button img{
+	border:none;
+}
+#close_button {
+	position:absolute;
+	bottom:0;
+	right:0;
+	margin-right:2em;
+	margin-bottom:5px;
+}
+#close_button a {
+	font-family:helvetica;
+	font-size:16pt;
+}
+#show_tags_link  {
+	top:-20;
+	background-color:#F19B51;
+	color:#5B7DE3;
+	padding:5px;
+	text-decoration:none;
+	text-align:center;
+	width:100px;
+	margin:0 auto;
+}
+#show_tags_link a {
+	text-decoration:none;
+	color:#4C6E4C;
+}			
+
+
+/*        FORMS            */
+
+/* Standard From */
+.session form {
+	padding:0 0 4em;
+}
+fieldset{
+	background:#F2F2F2 none repeat scroll 0 0	;
+	border:none;
+	padding:20px;
+
+}
+.session label {
+	display:block;
+	font-weight:bold;
+	font-size:8pt;
+}
+.session input {
+	width:90%;
+	font-size:26px;	
+}
+.session input[type=checkbox] {
+	width:20px;
+}
+.buttons input {
+	width:120px;
+	height:46px;
+}
+/* Form for book tags */
+.tag_form label {
+	float: none;
+	text-align:top;
+	color: gray;
+	font-size:10pt;
+}
+.tag_form input {
+	border:solid 2px #aacfe4;
+	background-color: white;
+	color: black;
+	font-size: 10pt;
+	width: 13em;
+	margin-top: .5em;
+	margin-left:0;
+	padding: 7px;
+}
+.tag_form input[type=submit] {
+	background-color: #9E9E9E;
+	color: black;
+	border:none;
+	width:7em ;
+	padding: 7px;
+}
+
+/* Class = show. This is for general forms in any show action */
+#tag_list ul{
+	padding-left:0;
+	margin-top:15px;
+	margin-left:4px;
+	float:left;
+	list-style:none;
+	height:50px;
+}
+#tag_list li {
+	text-align:center;
+	width:100px;	
+	margin-left:0;
+	padding:4px;
+	background-color:#3BE18D;
+}
+#tag_list a {
+	color:#494949;
+	width:100%;
+	font-size:10pt;
+}			
+
+
+
+/*Tags Table*/
+table.tags_table {
+	width:40em;
+}
+
+table.tags_table  td {
+	font-size:10pt;
+	color:#000;
+	max-width:3em;
+	text-align:center;
+	background-color:#8D9FB6;
+	border:0.25px solid #4D5764;
+}
+table.tags_table  td a {
+	text-decoration:none;
+	color:#2A211C;
+}
+table.tags_table td.update_link a{
+	text-decoration:none;
+	color:#D6EB1F;
+}
+table.tags_table td.update_link a:hover{
+	color:#ffffff;
+}
+/* Edit tags table */
+table.edit_tags {
+	width:400px;
+}
+table.edit_tags tr {
+	color: gray;
+	font-size:10pt;
+	padding-bottom:0;
+}
+table.edit_tags td{
+	padding-top:0;
+}
+
+/* Books index table */
+

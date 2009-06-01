@@ -1,30 +1,29 @@
 <div id="center">
 	<h2>Sign in</h2>
 
-	<% form_for :session, :url => session_path, :html => { :class => 'user_form' } do |form| %>
-	  <div class="text_field">
-	    <%= form.label :email %>
-	    <%= form.text_field :email %>  
-	  </div>
-	  <div class="text_field">
-	    <%= form.label :password %>
-	    <%= form.password_field :password %>
-	  </div>
-	  <div class="text_field">
-	    <%= form.check_box :remember_me %>
-	    <%= form.label :remember_me %>
-	  </div>
-	  <div class="submit_field">
-	    <%= form.submit "Sign in", :disable_with => "Please wait..." %>
-	  </div>
+	<% form_for :session, :url => session_path , :html => { :class => 'session'  }do |form| %>
+		<fieldset>
+			<p>
+				<%= form.label :email %>
+		    <%= form.text_field :email %>  
+			</p>
+			
+			<p>
+				<%= form.label :password %>
+		    <%= form.password_field :password %>
+			</p>
+			<p>
+		    <%= form.label :remember_me %>
+		    <%= form.check_box :remember_me %>				
+			</p>
+
+			<div class='buttons'>
+			    <%= image_submit_tag  'icons/login_button.png'  %>				
+			    <%= link_to "Forgot password?", new_password_path %>
+			    <%= link_to "Sign up", new_user_path %>
+
+			</div><!--end -->
+		</fieldset>
 	<% end %>
 
-	<ul>
-	  <li>
-	    <%= link_to "Sign up", new_user_path %>
-	  </li>
-	  <li>
-	    <%= link_to "Forgot password?", new_password_path %>
-	  </li>
-	</ul>	
 </div><!--end center-->

@@ -10,17 +10,24 @@
 	<% form_for(:user,
 	            :url => user_password_path(@user, :token    => @user.token),
 	            :html => { :method => :put }) do |form| %>
-	  <div class="password_field">
-	    <%= form.label :password, "Choose password" %>
-	    <%= form.password_field :password %>
-	  </div>
-	  <div class="password_field">
-	    <%= form.label :password_confirmation, "Confirm password" %>
-	    <%= form.password_field :password_confirmation %>
-	  </div>
-	  <div class="submit_field">
-	    <%= form.submit "Save this password", :disable_with => "Please wait..." %>
-	  </div>
+			<fieldset>
+			
+			<p>
+		    <%= form.label :password, "Choose password" %>
+		    <%= form.password_field :password %>
+			</p>
+			
+			<p>
+			    <%= form.label :password_confirmation, "Confirm password" %>
+			    <%= form.password_field :password_confirmation %>
+			</p>
+			
+			<p>
+			    <%= form.submit "Save this password", :disable_with => "Please wait..." %>
+			</p>
+			
+			</fieldset>
+
 	<% end %>
 	
 </div><!--end center-->

@@ -1,19 +1,17 @@
 <div id="center">
-	<h1> Update listing for <%= @listing.book.title %></h1>
-	<ul class='form'>
-	<% form_for([@user,@listing], :html => {:class => 'new_book_form'}) do |f|%>
-		<li>
-		<%= f.label :market_status %>
-		<%= f.select :market_status, ['available','pending','sold'], :include_blank => true  %>
-		</li>
+	<h2> Update listing for "<%= @listing.book.title %>"</h2>
+	<% form_for [@user,@listing] do |f|%>
 
-		<li>
-		<%= f.label :price %>
-		<%= f.text_field :price %>
-		</li>
-		<li>
-		<%= f.submit 'update'%>
-		</li>
+	<fieldset>
+
+		<%= f.label :market_status , "Indicate the status of your listing"%>
+		<%= f.select :market_status, { :available => 1 , :pending => 0, :sold => -1} %>
+		
+		<%= render :partial => 'listings/form', :locals => { :f => f } %>
+		
+
+		<%= f.submit 'update'%> or <%= link_to "back to listings" , user_listings_url( @listing	)  %>
+	</fieldset>
 	<% end %>
-	</ul>
+
 </div><!--end center-->

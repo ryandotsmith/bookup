@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 STRICT//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>BookUp</title>
+
+		<%= stylesheet_link_tag 'home' %>
+
+		<% get_js.each do |js|%>
+			<%= javascript_include_tag js %>
+		<% end%>
+</head>
+
+<body>		 
+	<div id="header">
+		<%= link_to image_tag("bookup_logo.png"), root_url %>
+		<%= render :partial => '/sessions/session_bar'%>
+	</div><!--end header-->
+	<div id="info_bar">
+		<%= render :partial => 'global/flash', :locals => { :flash => flash }%>
+	</div><!--end info_bar-->
+	<div id="container">
+		<%= yield  %>		
+		<div id="waiting_divs" style='display:none'>
+		</div><!--end waiting_divs-->
+	</div><!--end container-->
+</body>
+</html>

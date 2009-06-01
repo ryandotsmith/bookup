@@ -25,11 +25,12 @@ ActiveRecord::Schema.define(:version => 20090413210708) do
   create_table "listings", :force => true do |t|
     t.integer  "book_id"
     t.integer  "user_id"
-    t.integer  "market_status", :default => 1
+    t.integer  "market_status",      :default => 1
     t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "price"
+    t.boolean  "interesting_trades"
   end
 
   create_table "rates", :force => true do |t|

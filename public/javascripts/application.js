@@ -1,15 +1,10 @@
 $(document).ready( function() {
-	$("#session_bar").corners('10px');
-	$("#waiting_divs").corners('10px');
-	$(".books_index").tablesorter({ widgets: ['zebra']});
-	$("#show_book_listings_table").tablesorter();
 	$("#average_book_price").corners('10px')
-	$("#flash_notice").corners()
-	$("#flash_failure").corners()
-	$("#flash_success").corners()
+	$("#flash_success, #flash_failure, #flash_notice").corners('top 10px')
 	$(".formError").corners();
 	$("#tag_list li").corners('10px');
 	$("#show_tags_link").corners('bottom 10px');
+	$('#average_price_text').corners();
 	// Books#edit 
 		$('input.autocomplete').each(function(){
 	    var input = $(this);

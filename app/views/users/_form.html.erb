@@ -1,18 +1,20 @@
 <%= form.error_messages %>
-<div class="text_field">
-  <%= form.label :email %>
-  <%= form.text_field :email %>
-</div>
-<div class="text_field">
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-</div>
+	<p>
+	  <%= form.label :email, "Your Email" %>
+	  <%= form.text_field :email , :class => 'session'%>
+	</p>
 
-<div class="password_field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-</div>
-<div class="password_field">
-  <%= form.label :password_confirmation, "Confirm password" %>
-  <%= form.password_field :password_confirmation %>
-</div>
+	<p>
+	  <%= form.label :name, "Your Name" %>
+	  <%= form.text_field :name %>
+	</p>
+
+	<p>
+	  <%= form.label :password %>
+	  <%= form.password_field :password %>
+	</p>
+
+	<p>
+	  <%= form.label :password_confirmation, "Confirm password" %>
+	  <%= form.password_field :password_confirmation %>
+	</p>

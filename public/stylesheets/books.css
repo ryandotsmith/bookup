@@ -1,0 +1,63 @@
+/* structure */
+#suggestion {
+	width:100%;
+	margin:0 auto;
+	background-color:#7ACB7A;
+}
+#suggestion p {
+	padding:10px;
+	margin:5px;
+}
+.book {
+	margin-left:15px;
+	padding:4px;
+	margin-bottom:10px;
+	width:700px;
+	height:100px;
+}
+.book_cover {
+	float:left;
+	height:100px;
+	margin-right:20px;
+}
+.book_cover img {
+	border:none;
+}
+.price_tag {
+	padding:5px;
+	background-color:#D9F0D9;
+}
+#image {
+	float:left;
+}
+#details {
+	float:left;
+	margin-left:20px;
+}
+#listings {
+	clear:both;
+	padding-top:40px;
+}
+/****     structure       ****/
+form {
+	padding:0 0 4em;
+}
+label {
+	display:block;
+	font-size:8pt;
+	width:100px;
+}
+input[type=text] {
+	width:90%;
+	font-size:26px;	
+}
+input[type=text].loading {
+	width:90%;
+	font-size:26px;	
+	background-image:url(/images/spinner.gif);
+	background-repeat:no-repeat;
+	background-position:right;
+}
+input[type=submit] {
+	margin:10px 0 auto ;
+}

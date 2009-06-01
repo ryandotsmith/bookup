@@ -1,18 +1,11 @@
 <div id="center">
-	<h1>Sell your copy of "<%= @book.title %>" </h1>
-	<ul class='form'>
-	<% form_for([@book,@listing], :html => {:class => 'new_book_form'}) do |f|%>
-		<li>
-			<%= f.label :comment %>
-			<%= f.text_field :comment %>
-		</li>
-		<li>
-			<%= f.label :price %>
-			<%= f.text_field :price%>
-		</li>
-		<li>
-			<%= f.submit "submit"%>
-		</li>
+	<h2><%= @book.title %> </h2>
+	<h3> Sell your copy </h3>
+	<% form_for [@book,@listing] do |f|%>
+	<fieldset>
+			<%= render :partial => 'listings/form', :locals => { :f => f } %>
+			<%= f.submit "create listing"%>	or <%= link_to "back to book", @book %>			
+	</fieldset>
 	<% end %>	
-	</ul>
+
 </div><!--end center-->

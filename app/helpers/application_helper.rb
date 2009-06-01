@@ -7,11 +7,11 @@ module ApplicationHelper
     @user = current_user
   end#logged_in?
 
-  ####################
-  #get_css
-  def get_css
-    ['style','humanity','tablesorter','table','form','list','jquery.autocomplete']
+  def get_css( controller )
+    [controller.controller_name, 'application','jquery.autocomplete','humanity']
   end#get_css
+
+
   ####################
   #get_js
   def get_js
@@ -33,10 +33,17 @@ module ApplicationHelper
   end#scribble( attr )
   ####################
   #shorten
-  def shorten( attr )
-    return short_attr = attr[0..24] + "... " if attr.length >= 24
+  def shorten( attr , len=24)
+    return short_attr = attr[0..len] + "... " if attr.length >= len
     attr
   end#shorten
+
+  def dollar_sign( number )
+    "$" + "%.2f" % number 
+  end
+  def n_a_ify( string )
+    string.length.zero? ? %W( NA ) : string
+  end
   def clippy(text, bgcolor='#FFFFFF')
     html = <<-EOF
       <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"

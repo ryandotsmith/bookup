@@ -1,29 +1,50 @@
+<div id="left">
+	<%= render :partial => '/sessions/session_bar'%>
+	<h2>Categories</h2>
+	<ul>
+		<li><%= link_to "All Categories", books_url %></li>
+	<% Book.discipline_counts.each do |discipline|%>
+		<li><%= link_to discipline, books_url( :q => 'discipline', :q_selection => discipline.name ) %></li>
+	<% end %>
+	<ul>
+</div><!--end left-->
+
 <div id="center">
+	<h2>Awesome Deals<br /></h2>
 	<% @books_hash.each do |tag,books| %>
-	<table class ='books_index'>
-		<caption><%= tag %></caption>
-		<thead>
-			<tr>
-				<th>Title</th>
-				<th>Edition</th>
-				<th>ISBN</th>				
-				<th>Copies For Sale</th>
-				<th>Average Price</th>				
-			</tr>
-		</thead>
-		<tbody>		
+			<div>
+				<h3><%= tag %></h3>
+			</div><!--end -->
 			<% books.each do |book|%>
-				<tr>
-					<td><%= link_to "#{ shorten book.title }", book %></td>
-					<td><%= book.edition %></td>
-					<td><%= book.isbn %></td>
-					<td><%= book.active_listings.count %></td>
-					<td><%= book.average_price() %></td>
-				</tr>
+				<div class="book">
+					<%= link_to image_tag( "#{ book.img_url }", :size => '100x100' ), book ,:class => 'book_cover'%>						
+					<table>
+						<tbody>
+						  <tr>
+						    <td><strong><%= shorten link_to( book.title, book), 60 %></strong></td>
+							</tr>
+
+						  <tr>
+								<td><a class='price_tag'><%=dollar_sign book.average_price %></a></td>
+							</tr>
+
+							<tr>
+						    <td><%= n_a_ify book.edition %></td>
+						  </tr>
+
+							<tr>
+						    <td><%= book.isbn %></td>
+						  </tr>
+
+							<tr>
+						    <td><%= pluralize book.active_listings.count, "listing" %></td>
+						  </tr>
+						</tbody>
+					</table>
+
+				</div><!--end book-->
 			<% end %>
 		<% end %>
-	</tbody>
-	</table>
 	<p> 
 		Have a book that is not on the list? <br />
 		<%= link_to "add it to the list", new_book_path %>

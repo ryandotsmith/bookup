@@ -1,13 +1,17 @@
 class BooksController < ApplicationController
   #autocomplete_for :tags, :tag_list
-  before_filter :authenticate, :except => [:index,:show]
+  before_filter :authenticate, :except => [:index,:show,:home]
   before_filter :load_user
 
   def autocomplete_tag_list
     @tags = Book.suggest_tags( params )
-    render :inline => @tags
+    render :inline => @tags.join("\n")
   end
 
+  def home
+    render :layout => 'home'
+  end
+  
   def index
     params[:q] ||= 'discipline'
     @books_hash = Book.find_and_sort( params )
@@ -55,9 +59,9 @@ class BooksController < ApplicationController
     @book = Book.new(:isbn => isbn)
     if @book.scrub_isbn()
       @book.fetch_attrs_from_amazon()
-      render :text => "#{@book.title}"
+      render :text => "<p>#{@book.title}</p>"
     else
-      render :text => "could not find book with that ISBN"
+      render :text => "<p>could not find a book with that ISBN</p>"
     end
   end#lookup
 
