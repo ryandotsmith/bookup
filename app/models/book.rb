@@ -81,6 +81,7 @@ class Book < ActiveRecord::Base
       self.authors    = result.authors
       self.list_price = result.list_price_usd
       self.img_url    = result.medium_image.url
+      self.thumbnail  = result.small_image.url
     rescue
       false
     end

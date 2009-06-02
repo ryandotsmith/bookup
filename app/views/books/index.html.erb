@@ -21,7 +21,7 @@
 			</div><!--end -->
 			<% books.each do |book|%>
 				<div class="book">
-					<%= link_to image_tag( "#{ book.img_url }", :size => '100x100' ), book ,:class => 'book_cover'%>						
+					<%= link_to image_tag( "#{ book.thumbnail }" ), book ,:class => 'book_cover'%>						
 					<table>
 						<tbody>
 						  <tr>
