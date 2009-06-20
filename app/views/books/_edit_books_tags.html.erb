@@ -35,11 +35,8 @@
 										'autocomplete_url'=> autocomplete_tag_list_url(:autocomplete_attr => :instructor) %>
 	</td>
 	</tr>
-	<tr>
-		<td>
-			<%= f.submit "update tags"%>
-		</td>
-	</tr>
 </tbody>
 </table>
+<%= f.submit "update tags"%> <%= link_to "back to book", @book, :class => 'highlight' %>
+
 <% end %>

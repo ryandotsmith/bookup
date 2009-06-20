@@ -30,6 +30,13 @@ h3 a:hover {
 	color:green;
 	border-bottom:1px solid yellow;
 }
+h4 {
+	padding:0;
+	margin:0;
+	color:#363636;
+	background-color:#E3D7BC;
+	width:100%;
+}
 span {
 	font-size:13px;
 }
@@ -137,15 +144,6 @@ img {
 	margin-top:4px;
 	background:#E2CB5D;
 }
-#tag_list {
-	position:absolute;
-	background-color:#F19B51;
-	top:0;
-	left:0;
-	margin-left:45px;
-	width:800px;
-	height:75px;
-}
 #edit_button {
 	position:absolute;
 	bottom:0;
@@ -167,21 +165,6 @@ img {
 	font-family:helvetica;
 	font-size:16pt;
 }
-#show_tags_link  {
-	top:-20;
-	background-color:#F19B51;
-	color:#5B7DE3;
-	padding:5px;
-	text-decoration:none;
-	text-align:center;
-	width:100px;
-	margin:0 auto;
-}
-#show_tags_link a {
-	text-decoration:none;
-	color:#4C6E4C;
-}			
-
 
 /*        FORMS            */
 
@@ -193,7 +176,6 @@ fieldset{
 	background:#F2F2F2 none repeat scroll 0 0	;
 	border:none;
 	padding:20px;
-
 }
 .session label {
 	display:block;
@@ -211,91 +193,3 @@ fieldset{
 	width:120px;
 	height:46px;
 }
-/* Form for book tags */
-.tag_form label {
-	float: none;
-	text-align:top;
-	color: gray;
-	font-size:10pt;
-}
-.tag_form input {
-	border:solid 2px #aacfe4;
-	background-color: white;
-	color: black;
-	font-size: 10pt;
-	width: 13em;
-	margin-top: .5em;
-	margin-left:0;
-	padding: 7px;
-}
-.tag_form input[type=submit] {
-	background-color: #9E9E9E;
-	color: black;
-	border:none;
-	width:7em ;
-	padding: 7px;
-}
-
-/* Class = show. This is for general forms in any show action */
-#tag_list ul{
-	padding-left:0;
-	margin-top:15px;
-	margin-left:4px;
-	float:left;
-	list-style:none;
-	height:50px;
-}
-#tag_list li {
-	text-align:center;
-	width:100px;	
-	margin-left:0;
-	padding:4px;
-	background-color:#3BE18D;
-}
-#tag_list a {
-	color:#494949;
-	width:100%;
-	font-size:10pt;
-}			
-
-
-
-/*Tags Table*/
-table.tags_table {
-	width:40em;
-}
-
-table.tags_table  td {
-	font-size:10pt;
-	color:#000;
-	max-width:3em;
-	text-align:center;
-	background-color:#8D9FB6;
-	border:0.25px solid #4D5764;
-}
-table.tags_table  td a {
-	text-decoration:none;
-	color:#2A211C;
-}
-table.tags_table td.update_link a{
-	text-decoration:none;
-	color:#D6EB1F;
-}
-table.tags_table td.update_link a:hover{
-	color:#ffffff;
-}
-/* Edit tags table */
-table.edit_tags {
-	width:400px;
-}
-table.edit_tags tr {
-	color: gray;
-	font-size:10pt;
-	padding-bottom:0;
-}
-table.edit_tags td{
-	padding-top:0;
-}
-
-/* Books index table */
-

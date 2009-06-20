@@ -1,6 +1,5 @@
 <div id="left">
 	<%= render :partial => '/sessions/session_bar'%>
-	
 </div><!--end left-->
 
 
@@ -34,7 +33,7 @@
 		</tbody>
 		</table>
 	</div><!--end details-->
-
+	<%= render :partial => 'book_tags', :locals => { :book => @book }%>
 	<div id="listings">
 		<%= link_to "#{ image_tag 'new_listing_button.png'}", new_book_listing_path(@book)%>
 		<% if @book.listings.count != 0 %>
