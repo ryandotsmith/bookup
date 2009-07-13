@@ -1,5 +1,5 @@
 HOST = 'www.bookup.org'
-DO_NOT_REPLY = "root@bookup.org"
+DO_NOT_REPLY = "donotreply@bookup.org"
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
