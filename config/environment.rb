@@ -25,7 +25,6 @@ Rails::Initializer.run do |config|
   config.gem 'rubaidh-google_analytics', 
     :lib => 'rubaidh/google_analytics', 
     :source => 'http://gems.github.com'
-
   config.gem "thoughtbot-clearance", 
     :lib     => 'clearance', 
     :source  => 'http://gems.github.com', 
