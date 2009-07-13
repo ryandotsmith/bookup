@@ -1,0 +1,943 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head>
+
+  
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-type">
+    <title>Radiant CMS - Publishing for Small Teams</title>
+    <link href="edit_files/main.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="edit_files/prototype.js" type="text/javascript"></script>
+    <script src="edit_files/string.js" type="text/javascript"></script>
+    <script src="edit_files/effects.js" type="text/javascript"></script>
+    <script src="edit_files/tabcontrol.js" type="text/javascript"></script>
+    <script src="edit_files/ruledtable.js" type="text/javascript"></script>
+    <script src="edit_files/admin.js" type="text/javascript"></script>
+    <!--[if lt IE 7]> 
+      <script src='/javascripts/pngfix.js' type='text/javascript'></script>
+    <![endif]-->
+    <script type="text/javascript">
+    //<![CDATA[
+        var last_type = "";
+        function load_tag_reference(part) {
+          page_type = $F('page_class_name');
+          popup = $('tag-reference-popup');
+          if(last_type != page_type) {
+            url = "/admin/references/tags";
+            params = "class_name=" + page_type;
+            new Effect.Highlight('tag-reference-link-'+ part);
+            req = new Ajax.Request(url, { method: 'get', parameters: params, evalScripts: true });
+          } else {
+             center(popup);
+             Element.toggle(popup);
+          }
+          return false;
+        }
+        var last_filter = "";
+        function load_filter_reference(part) {
+          filter_type = $F("part_" + part + "_filter_id");
+          popup = $('filter-reference-popup');
+          if(last_filter != filter_type) {
+            url = "/admin/references/filters";
+            params = "filter_name=" + filter_type;
+            new Effect.Highlight('filter-reference-link-'+ part);
+            req = new Ajax.Request(url, { method: 'get', parameters: params, evalScripts: true });
+          } else {
+            center(popup);
+            Element.toggle(popup);
+          }
+          return false;
+        }
+    
+    //]]>
+    </script>
+    <style type="text/css">
+      #content #extended-metadata .fieldset {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: .5em;
+        padding: 0; }
+        #content #extended-metadata .fieldset td.label {
+          text-align: left;
+          width: 15%; }
+          #content #extended-metadata .fieldset td.label .textbox {
+            width: 90%; }
+    </style>
+  </head><div FirebugVersion="1.3.3" style="display: none;" id="_firebugConsole"></div><body>
+    <div id="page">
+      <div id="header">
+        <div id="site-title"><a href="http://localhost:3000/admin">Radiant CMS</a></div>
+        <div id="site-subtitle">Publishing for Small Teams</div>
+        <div id="navigation"><strong><a href="http://localhost:3000/admin/pages">Pages</a></strong> <span class="separator"> | </span> <a href="http://localhost:3000/admin/snippets">Snippets</a> <span class="separator"> | </span> <a href="http://localhost:3000/admin/layouts">Layouts</a> <span class="separator"> | </span> <a href="http://localhost:3000/admin/profiles">Profiles</a></div>
+      </div>
+      <hr class="hidden">
+      <div id="main">
+        <div id="content">
+          <h1>Edit Page</h1>
+          <form action="/admin/pages/2" enctype="multipart/form-data" id="edit_page" method="post"><div style="margin: 0pt; padding: 0pt;"><input name="_method" value="put" type="hidden"><input name="authenticity_token" value="+Vjp8C5vjD5+Ey74pgEQkD44IuokkBwObhnVBnHZzUg=" type="hidden"></div>
+            <input id="page_lock_version" name="page[lock_version]" value="0" type="hidden">
+            <input id="page_parent_id" name="page[parent_id]" value="1" type="hidden">
+            
+            <div class="form-area">
+            <p class="title">
+              <label for="page_title">
+                Page Title
+              </label>
+              <input class="textbox" id="page_title" maxlength="255" name="page[title]" size="255" value="Teachers" type="text">
+            </p>
+            <div class="row" id="extended-metadata" style="display: none;">
+              <table class="fieldset">
+                <tbody><tr>
+                  <th class="label">
+                    <label for="page_slug">
+                      Slug
+                    </label>
+                  </th>
+                  <td class="field">
+                    <input class="textbox" id="page_slug" maxlength="100" name="page[slug]" size="100" value="teachers" type="text">
+                  </td>
+                </tr>
+                <tr>
+                  <th class="label">
+                    <label for="page_breadcrumb">
+                      Breadcrumb
+                    </label>
+                  </th>
+                  <td class="field">
+                    <input class="textbox" id="page_breadcrumb" maxlength="160" name="page[breadcrumb]" size="160" value="Teachers" type="text">
+                  </td>
+                </tr>
+                <tr>
+                  <th class="label">
+                    <label for="page_description">
+                      Description
+                    </label>
+                  </th>
+                  <td class="field">
+                    <input class="textbox" id="page_description" maxlength="200" name="page[description]" size="200" value="" type="text">
+                  </td>
+                </tr>
+                <tr>
+                  <th class="label">
+                    <label for="page_keywords">
+                      Keywords
+                    </label>
+                  </th>
+                  <td class="field">
+                    <input class="textbox" id="page_keywords" maxlength="200" name="page[keywords]" size="200" value="" type="text">
+                  </td>
+                </tr>
+                
+              </tbody></table>
+            </div>
+            <p class="more-or-less">
+              <small>
+                <a href="#" id="more-extended-metadata" onclick="Element.toggle('extended-metadata'); Element.toggle('more-extended-metadata'); Element.toggle('less-extended-metadata');">More</a>
+                <a href="#" id="less-extended-metadata" onclick="Element.toggle('extended-metadata'); Element.toggle('more-extended-metadata'); Element.toggle('less-extended-metadata');" style="display: none;">Less</a>
+              </small>
+            </p>
+              <div id="tab-control">
+                <div class="tabs" id="tabs">
+                  <div id="tab-toolbar">
+                    <a href="#" onclick="toggle_add_part_popup(); return false;" title="Add Tab"><img alt="plus" src="edit_files/plus.png"></a>
+                    <a href="#" onclick="if(confirm('Delete the current tab?')) { tabControl.removeTab(tabControl.selected) }; return false;" title="Remove Tab"><img alt="minus" src="edit_files/minus.png"></a>
+                  </div>
+                <a href="#" class="tab here"><span>body</span></a><a href="#" class="tab"><span>extended</span></a></div>
+                <div class="pages" id="pages">
+                  <div style="" class="page" id="page-body">
+                    <div class="part" id="part-body">
+                      <input id="part_body_name" name="page[parts_attributes][0][name]" value="body" type="hidden">
+                      <input class="id_input" id="part_0_id" name="page[parts_attributes][0][id]" value="3" type="hidden">
+                      <input class="delete_input" id="page_parts_attributes_0__delete" name="page[parts_attributes][0][_delete]" value="false" type="hidden">
+                      <p>
+                        <label for="part_body_filter_id">Filter</label>
+                        <select id="part_body_filter_id" name="page[parts_attributes][0][filter_id]"><option value="" selected="selected">&lt;none&gt;</option>
+                        <option value="Markdown">Markdown</option>
+                        <option value="SmartyPants">SmartyPants</option>
+                        <option value="Textile">Textile</option></select>
+                        <span id="reference-links">
+                          Reference:
+                          <span id="filter-reference-link-body">
+                            <a href="#" onclick="load_filter_reference('body');; return false;">Filter</a>
+                          </span>
+                          <span id="tag-reference-link-body">
+                            <a href="#" onclick="load_tag_reference('body');; return false;">Available Tags</a>
+                          </span>
+                        </span>
+                        
+                      </p>
+                      <div>
+                        <textarea class="textarea" id="part_body_content" name="page[parts_attributes][0][content]" style="width: 100%;"> &lt;ul&gt;
+    &lt;r:profiles:each&gt;
+      &lt;li&gt;
+        &lt;p&gt;Name: &lt;r:profile:name/&gt;&lt;/p&gt;
+        &lt;p&gt;Title: &lt;r:profile:title/&gt;&lt;/p&gt;
+        &lt;p&gt;Biography: &lt;r:profile:biography/&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/r:profiles:each&gt;
+  &lt;/ul&gt;</textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="display: none;" class="page" id="page-extended">
+                    <div class="part" id="part-extended">
+                      <input id="part_extended_name" name="page[parts_attributes][1][name]" value="extended" type="hidden">
+                      <input class="id_input" id="part_1_id" name="page[parts_attributes][1][id]" value="4" type="hidden">
+                      <input class="delete_input" id="page_parts_attributes_1__delete" name="page[parts_attributes][1][_delete]" value="false" type="hidden">
+                      <p>
+                        <label for="part_extended_filter_id">Filter</label>
+                        <select id="part_extended_filter_id" name="page[parts_attributes][1][filter_id]"><option value="" selected="selected">&lt;none&gt;</option>
+                        <option value="Markdown">Markdown</option>
+                        <option value="SmartyPants">SmartyPants</option>
+                        <option value="Textile">Textile</option></select>
+                        <span id="reference-links">
+                          Reference:
+                          <span id="filter-reference-link-extended">
+                            <a href="#" onclick="load_filter_reference('extended');; return false;">Filter</a>
+                          </span>
+                          <span id="tag-reference-link-extended">
+                            <a href="#" onclick="load_tag_reference('extended');; return false;">Available Tags</a>
+                          </span>
+                        </span>
+                        
+                      </p>
+                      <div>
+                        <textarea class="textarea" id="part_extended_content" name="page[parts_attributes][1][content]" style="width: 100%;"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div class="row">
+              <p>
+                <label for="page_layout_id">
+                  Layout
+                </label>
+                <select id="page_layout_id" name="page[layout_id]"><option value="">&lt;inherit&gt;</option></select>
+              </p>
+              <p>
+                <label for="page_class_name">
+                  Page Type
+                </label>
+                <select id="page_class_name" name="page[class_name]"><option value="" selected="selected">&lt;normal&gt;</option>
+                <option value="ArchivePage">Archive</option>
+                <option value="ArchiveDayIndexPage">Archive Day Index</option>
+                <option value="ArchiveMonthIndexPage">Archive Month Index</option>
+                <option value="ArchiveYearIndexPage">Archive Year Index</option>
+                <option value="EnvDumpPage">Env Dump</option>
+                <option value="FileNotFoundPage">File Not Found</option></select>
+              </p>
+              <p>
+                <label for="page_status_id">
+                  Status
+                </label>
+                <select id="page_status_id" name="page[status_id]"><option value="1">Draft</option>
+                <option value="50">Reviewed</option>
+                <option value="100" selected="selected">Published</option>
+                <option value="101">Hidden</option></select>
+              </p>
+              
+            </div>
+            <span class="clear">&nbsp;</span>
+            <p style="clear: left;"><small>Last updated by admin at 05:13 <small>AM</small> on June 22, 2009</small></p>
+            </div>
+            <p class="buttons">
+              <input class="button" name="commit" value="Save Changes" type="submit">
+              <input class="button" name="continue" value="Save and Continue Editing" type="submit">
+              or
+              <a href="http://localhost:3000/admin/pages">Cancel</a>
+            </p>
+          </form>
+        </div>
+      </div>
+      <hr class="hidden">
+      <div id="footer">
+        <p>
+          This site was made with Ruby and is powered by
+          <a href="http://radiantcms.org/">Radiant CMS</a>
+          version
+          0.8.0 (gem).
+        </p>
+        <p id="site-links">
+          <a href="http://localhost:3000/admin/users">Users</a>
+          <span class="separator"> |</span>
+          <a href="http://localhost:3000/admin/extensions">Extensions</a>
+          <span class="separator"> |</span>
+          <a href="http://localhost:3000/admin/logout">Log Out</a>
+          <span class="separator"> |</span>
+          <a href="http://localhost:3000/"><img alt="View Site" src="edit_files/view-site.gif" title=""></a>
+        </p>
+      </div>
+      <div id="popups">
+        <div class="popup" id="add-part-popup" style="display: none;">
+          <div class="busy" id="busy" style="display: none;"><img alt="Spinner" src="edit_files/spinner.gif"></div>
+          <h3>Add Part</h3>
+        <form action="/admin/page_parts" class="new_page_part" id="new_page_part" method="post" onsubmit="if (valid_part_name()) { new Ajax.Updater('pages', '/admin/page_parts', {asynchronous:true, evalScripts:true, insertion:'bottom', onComplete:function(request){part_added()}, onLoading:function(request){part_loading()}, parameters:Form.serialize(this)}); }; return false;"><div style="margin: 0pt; padding: 0pt;"><input name="authenticity_token" value="+Vjp8C5vjD5+Ey74pgEQkD44IuokkBwObhnVBnHZzUg=" type="hidden"></div>
+          <div>
+            <input id="page-part-index-field" name="index" value="2" type="hidden">
+            <input id="part-name-field" name="page_part[name]" size="30" type="text">
+            <input id="add-part-button" name="commit" value="Add Part" type="submit">
+          </div>
+          <p>
+            <a href="#" class="close">Close</a>
+          </p>
+        </form></div>
+        <div class="popup" id="tag-reference-popup" style="position: absolute; top: 200px; left: 117.5px; display: none;">
+          <div style="float: right;">
+            <label for="search-tag-reference">Search Tags:</label>
+            <input id="search-tag-reference" type="text">
+          </div>
+          <h3>
+            Available Tags for
+            <span id="page-type">Page</span>
+          </h3>
+          <div id="tag-reference">
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:author /&gt;</h4>
+              <div><p>Renders the name of the author of the current page.</p></div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:breadcrumb /&gt;</h4>
+              <div><p>Renders the <code>breadcrumb</code> attribute of the current page.</p></div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:breadcrumbs /&gt;</h4>
+              <div>
+                <p>Renders a trail of breadcrumbs to the current page. The separator attribute<br>
+                specifies the <span class="caps">HTML</span> fragment that is inserted between each of the breadcrumbs. By<br>
+                default it is set to <code>&gt;</code>. The boolean nolinks attribute can be specified to render<br>
+                breadcrumbs in plain text, without any links (useful when generating title tag).</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:breadcrumbs [separator="separator_string"] [nolinks="true"] /&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:children /&gt;</h4>
+              <div>
+                <p>Gives access to a page’s children.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:children&gt;...&lt;/r:children&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:children:count /&gt;</h4>
+              <div><p>Renders the total number of children.</p></div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:children:each /&gt;</h4>
+              <div>
+                <p>Cycles through each of the children. Inside this tag all page attribute tags<br>
+                are mapped to the current child page.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:children:each [offset="number"] [limit="number"] [by="attribute"] [order="asc|desc"]
+                 [status="draft|reviewed|published|hidden|all"]&gt;
+                 ...
+                &lt;/r:children:each&gt;
+                </code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:children:each:child /&gt;</h4>
+              <div>
+                <p>Page attribute tags inside of this tag refer to the current child. This is occasionally<br>
+                useful if you are inside of another tag (like &lt;r:find&gt;) and need to refer back to the<br>
+                current child.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:children:each&gt;
+                  &lt;r:child&gt;...&lt;/r:child&gt;
+                &lt;/r:children:each&gt;
+                </code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:children:each:header /&gt;</h4>
+              <div>
+                <p>Renders the tag contents only if the contents do not match the previous header. This<br>
+                is extremely useful for rendering date headers for a list of child pages.</p>
+                <p>If you would like to use several header blocks you may use the <code>name</code> attribute to<br>
+                name the header. When a header is named it will not restart until another header of<br>
+                the same name is different.</p>
+                <p>Using the <code>restart</code> attribute you can cause other named headers to restart when the<br>
+                present header changes. Simply specify the names of the other headers in a semicolon<br>
+                separated list.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:children:each&gt;
+                  &lt;r:header [name="header_name"] [restart="name1[;name2;...]"]&gt;
+                    ...
+                  &lt;/r:header&gt;
+                &lt;/r:children:each&gt;
+                </code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:children:each:if_first /&gt;</h4>
+              <div>
+                <p>Renders the tag contents only if the current page is the first child in the context of<br>
+                a children:each tag</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:children:each&gt;
+                  &lt;r:if_first &gt;
+                    ...
+                  &lt;/r:if_first&gt;
+                &lt;/r:children:each&gt;
+                </code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:children:each:if_last /&gt;</h4>
+              <div>
+                <p>Renders the tag contents only if the current page is the last child in the context of<br>
+                a children:each tag</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:children:each&gt;
+                  &lt;r:if_last &gt;
+                    ...
+                  &lt;/r:if_last&gt;
+                &lt;/r:children:each&gt;
+                </code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:children:each:unless_first /&gt;</h4>
+              <div>
+                <p>Renders the tag contents unless the current page is the first child in the context of<br>
+                a children:each tag</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:children:each&gt;
+                  &lt;r:unless_first &gt;
+                    ...
+                  &lt;/r:unless_first&gt;
+                &lt;/r:children:each&gt;
+                </code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:children:each:unless_last /&gt;</h4>
+              <div>
+                <p>Renders the tag contents unless the current page is the last child in the context of<br>
+                a children:each tag</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:children:each&gt;
+                  &lt;r:unless_last &gt;
+                    ...
+                  &lt;/r:unless_last&gt;
+                &lt;/r:children:each&gt;
+                </code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:children:first /&gt;</h4>
+              <div>
+                <p>Returns the first child. Inside this tag all page attribute tags are mapped to<br>
+                the first child. Takes the same ordering options as <code>&lt;r:children:each&gt;</code>.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:children:first&gt;...&lt;/r:children:first&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:children:last /&gt;</h4>
+              <div>
+                <p>Returns the last child. Inside this tag all page attribute tags are mapped to<br>
+                the last child. Takes the same ordering options as <code>&lt;r:children:each&gt;</code>.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:children:last&gt;...&lt;/r:children:last&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:comment /&gt;</h4>
+              <div>
+                <p>Nothing inside a set of comment tags is rendered.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:comment&gt;...&lt;/r:comment&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:content /&gt;</h4>
+              <div>
+                <p>Renders the main content of a page. Use the <code>part</code> attribute to select a specific<br>
+                page part. By default the <code>part</code> attribute is set to body. Use the <code>inherit</code><br>
+                attribute to specify that if a page does not have a content part by that name that<br>
+                the tag should render the parent’s content part. By default <code>inherit</code> is set to<br>
+                <code>false</code>. Use the <code>contextual</code> attribute to force a part inherited from a parent<br>
+                part to be evaluated in the context of the child page. By default ‘contextual’<br>
+                is set to true.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:content [part="part_name"] [inherit="true|false"] [contextual="true|false"] /&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:cycle /&gt;</h4>
+              <div>
+                <p>Renders one of the passed values based on a global cycle counter.  Use the <code>reset</code><br>
+                attribute to reset the cycle to the beginning.  Use the <code>name</code> attribute to track<br>
+                multiple cycles; the default is <code>cycle</code>.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:cycle values="first, second, third" [reset="true|false"] [name="cycle"] /&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:date /&gt;</h4>
+              <div>
+                <p>Renders the date based on the current page (by default when it was published or created).<br>
+                The format attribute uses the same formating codes used by the Ruby <code>strftime</code> function. By<br>
+                default it’s set to <code>%A, %B %d, %Y</code>.  The <code>for</code> attribute selects which date to render.  Valid<br>
+                options are <code>published_at</code>, <code>created_at</code>, <code>updated_at</code>, and <code>now</code>. <code>now</code> will render the<br>
+                current date/time, regardless of the  page.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:date [format="%A, %B %d, %Y"] [for="published_at"]/&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:escape_html /&gt;</h4>
+              <div>
+                <p>Escapes angle brackets, etc. for rendering in an <span class="caps">HTML</span> document.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:escape_html&gt;...&lt;/r:escape_html&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:find /&gt;</h4>
+              <div>
+                <p>Inside this tag all page related tags refer to the page found at the <code>url</code> attribute.<br>
+                @url@s may be relative or absolute paths.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:find url="value_to_find"&gt;...&lt;/r:find&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:if_ancestor_or_self /&gt;</h4>
+              <div>
+                <p>Renders the contained elements if the current contextual page is either the actual page or one of its parents.</p>
+                <p>This
+is typically used inside another tag (like &lt;r:children:each&gt;) to
+add conditional mark-up if the child element is or descends from the
+current page.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:if_ancestor_or_self&gt;...&lt;/r:if_ancestor_or_self&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:if_children /&gt;</h4>
+              <div>
+                <p>Renders the contained elements only if the current contextual page has one or<br>
+                more child pages.  The <code>status</code> attribute limits the status of found child pages<br>
+                to the given status, the default is <code>"published"</code>. <code>status="all"</code> includes all<br>
+                non-virtual pages regardless of status.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:if_children [status="published"]&gt;...&lt;/r:if_children&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:if_content /&gt;</h4>
+              <div>
+                <p>Renders the containing elements if all of the listed parts exist on a page.<br>
+                By default the <code>part</code> attribute is set to <code>body</code>, but you may list more than one<br>
+                part by separating them with a comma. Setting the optional <code>inherit</code> to true will<br>
+                search ancestors independently for each part. By default <code>inherit</code> is set to <code>false</code>.</p>
+                <p>When listing more than one part, you may optionally set the <code>find</code> attribute to <code>any</code><br>
+                so that it will render the containing elements if any of the listed parts are found.<br>
+                By default the <code>find</code> attribute is set to <code>all</code>.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:if_content [part="part_name, other_part"] [inherit="true"] [find="any"]&gt;...&lt;/r:if_content&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:if_dev /&gt;</h4>
+              <div>
+                <p>Renders the containing elements only if Radiant in is development mode.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:if_dev&gt;...&lt;/r:if_dev&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:if_parent /&gt;</h4>
+              <div>
+                <p>Renders the contained elements only if the current contextual page has a parent, i.e.<br>
+                is not the root page.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:if_parent&gt;...&lt;/r:if_parent&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:if_self /&gt;</h4>
+              <div>
+                <p>Renders the contained elements if the current contextual page is also the actual page.</p>
+                <p>This
+is typically used inside another tag (like &lt;r:children:each&gt;) to
+add conditional mark-up if the child element is the current page.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:if_self&gt;...&lt;/r:if_self&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:if_url /&gt;</h4>
+              <div>
+                <p>Renders the containing elements only if the page’s url matches the regular expression<br>
+                given in the <code>matches</code> attribute. If the <code>ignore_case</code> attribute is set to false, the<br>
+                match is case sensitive. By default, <code>ignore_case</code> is set to true.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:if_url matches="regexp" [ignore_case="true|false"]&gt;...&lt;/r:if_url&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:link /&gt;</h4>
+              <div>
+                <p>Renders a link to the page. When used as a single tag it uses the page’s title<br>
+                for the link name. When used as a double tag the part in between both tags will<br>
+                be used as the link text. The link tag passes all attributes over to the <span class="caps">HTML</span><br>
+                <code>a</code> tag. This is very useful for passing attributes like the <code>class</code> attribute<br>
+                or <code>id</code> attribute. If the <code>anchor</code> attribute is passed to the tag it will<br>
+                append a pound sign (<code>#</code>) followed by the value of the attribute to<br>
+                the <code>href</code> attribute of the <span class="caps">HTML</span> <code>a</code> tag—effectively making an <span class="caps">HTML</span> anchor.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:link [anchor="name"] [other attributes...] /&gt;</code></pre>
+                <p>or</p>
+                <pre><code>&lt;r:link [anchor="name"] [other attributes...]&gt;link text here&lt;/r:link&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:markdown /&gt;</h4>
+              <div>
+                <p>Filters its contents with the Markdown filter.</p>
+                <p><strong>Usage</strong>:</p>
+                <pre><code>&lt;r:markdown&gt;** bold text **&lt;/r:markdown&gt;</code></pre>
+                <p>produces:</p>
+                <pre><code>&lt;strong&gt; bold text &lt;/strong&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:meta /&gt;</h4>
+              <div>
+                <p>The namespace for ‘meta’ attributes.  If used as a singleton tag, both the description<br>
+                and keywords fields will be output as &lt;meta /&gt; tags unless the attribute ‘tag’ is set to ‘false’.</p>
+                <p><strong>Usage</strong>:</p>
+                <pre><code> &lt;r:meta [tag="false"] /&gt;
+                 &lt;r:meta&gt;
+                   &lt;r:description [tag="false"] /&gt;
+                   &lt;r:keywords [tag="false"] /&gt;
+                 &lt;/r:meta&gt;
+                </code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:meta:description /&gt;</h4>
+              <div>
+                <p>Emits the page description field in a meta tag, unless attribute<br>
+                ‘tag’ is set to ‘false’.</p>
+                <p><strong>Usage</strong>:</p>
+                <pre><code> &lt;r:meta:description [tag="false"] /&gt; </code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:meta:keywords /&gt;</h4>
+              <div>
+                <p>Emits the page keywords field in a meta tag, unless attribute<br>
+                ‘tag’ is set to ‘false’.</p>
+                <p><strong>Usage</strong>:</p>
+                <pre><code> &lt;r:meta:keywords [tag="false"] /&gt; </code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:navigation /&gt;</h4>
+              <div>
+                <p>Renders a list of links specified in the <code>urls</code> attribute according to three<br>
+                states:</p>
+                <ul>
+                	<li><code>normal</code> specifies the normal state for the link</li>
+                	<li><code>here</code> specifies the state of the link when the url matches the current<br>
+                   page’s <span class="caps">URL</span></li>
+                	<li><code>selected</code> specifies the state of the link when the current page matches<br>
+                   is a child of the specified url</li>
+                </ul>
+                <p>The <code>between</code> tag specifies what should be inserted in between each of the links.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:navigation urls="[Title: url | Title: url | ...]"&gt;
+                  &lt;r:normal&gt;&lt;a href="&lt;r:url /&gt;"&gt;&lt;r:title /&gt;&lt;/a&gt;&lt;/r:normal&gt;
+                  &lt;r:here&gt;&lt;strong&gt;&lt;r:title /&gt;&lt;/strong&gt;&lt;/r:here&gt;
+                  &lt;r:selected&gt;&lt;strong&gt;&lt;a href="&lt;r:url /&gt;"&gt;&lt;r:title /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/r:selected&gt;
+                  &lt;r:between&gt; | &lt;/r:between&gt;
+                &lt;/r:navigation&gt;
+                </code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:page /&gt;</h4>
+              <div>
+                <p>Causes the tags referring to a page’s attributes to refer to the current page.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:page&gt;...&lt;/r:page&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:parent /&gt;</h4>
+              <div>
+                <p>Page attribute tags inside this tag refer to the parent of the current page.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:parent&gt;...&lt;/r:parent&gt;</code></pre>
+              </div>
+            </div>
+            <div class="tag-description">
+              <h4>&lt;r:profile /&gt;</h4>
+              <div>
+                <p>Causes the tags referring to a profile’s attributes to refer to the current profile.</p>
+                <p><strong>Usage:</strong><br>
+                </p><pre><code>&lt;r:profile [name="Scott Summers"]&gt;...&lt;/r:profile&gt;</code></pre>
+              </div>
+            </div>
+            <div class="tag-description">
+              <h4>&lt;r:profile:biography /&gt;</h4>
+              <div>
+                <p>Returns the biography of the staff member.<br>
+                  <br>
+                <strong>Usage:</strong><br>
+                </p><pre><code>&lt;r:profile:biography/&gt;</code></pre>
+              </div>
+            </div>
+            <div class="tag-description">
+              <h4>&lt;r:profile:email /&gt;</h4>
+              <div>
+                <p>Returns the email of the staff member.<br>
+                  <br>
+                <strong>Usage:</strong><br>
+                </p><pre><code>&lt;r:profile:email/&gt;</code></pre>
+              </div>
+            </div>
+            <div class="tag-description">
+              <h4>&lt;r:profile:image_url /&gt;</h4>
+              <div>
+                <p>Returns the profile image <span class="caps">URL</span> for a staff member.</p>
+                <p><strong>Usage:</strong><br>
+                </p><pre><code>&lt;r:profile:image_url/&gt;</code></pre>
+              </div>
+            </div>
+            <div class="tag-description">
+              <h4>&lt;r:profile:name /&gt;</h4>
+              <div>
+                <p>Returns the name of the staff member.<br>
+                  <br>
+                <strong>Usage:</strong><br>
+                </p><pre><code>&lt;r:profile:name/&gt;</code></pre>
+              </div>
+            </div>
+            <div class="tag-description">
+              <h4>&lt;r:profile:title /&gt;</h4>
+              <div>
+                <p>Returns the title of the staff member.<br>
+                  <br>
+                <strong>Usage:</strong><br>
+                </p><pre><code>&lt;r:profile:title/&gt;</code></pre>
+              </div>
+            </div>
+            <div class="tag-description">
+              <h4>&lt;r:profiles /&gt;</h4>
+              <div>
+                <p>Gives access to the available profiles.<br>
+                  <br>
+                <strong>Usage:</strong><br>
+                </p><pre><code>&lt;r:profiles&gt;...&lt;/r:profiles&gt;</code></pre>
+              </div>
+            </div>
+            <div class="tag-description">
+              <h4>&lt;r:profiles:each /&gt;</h4>
+              <div>
+                <p>Cycles through each of the staff profiles. Inside this tag all attribute tags<br>
+                are mapped to the current profile. By default only published profiles are included.</p>
+                <p><strong>Usage:</strong> <br>
+                </p><pre><code>&lt;r:profiles:each [status="Published"]&gt;...&lt;/r:profiles:each&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:random /&gt;</h4>
+              <div>
+                <p>Randomly renders one of the options specified by the <code>option</code> tags.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:random&gt;
+                  &lt;r:option&gt;...&lt;/r:option&gt;
+                  &lt;r:option&gt;...&lt;/r:option&gt;
+                  ...
+                &lt;r:random&gt;
+                </code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:rfc1123_date /&gt;</h4>
+              <div>
+                <p>Outputs the published date using the format mandated by <span class="caps">RFC</span> 1123. (Ideal for <span class="caps">RSS</span> feeds.)</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:rfc1123_date /&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:slug /&gt;</h4>
+              <div><p>Renders the <code>slug</code> attribute of the current page.</p></div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:smarty_pants /&gt;</h4>
+              <div>
+                <p>Filters its contents with the SmartyPants filter.</p>
+                <p><strong>Usage</strong>:</p>
+                <pre><code>&lt;r:smarty_pants&gt;"A revolutionary quotation."&lt;/r:smarty_pants&gt;</code></pre>
+                <p>produces:</p>
+                <pre><code>&amp;#8220;A revolutionary quotation.&amp;#8221;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:snippet /&gt;</h4>
+              <div>
+                <p>Renders the snippet specified in the <code>name</code> attribute within the context of a page.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:snippet name="snippet_name" /&gt;</code></pre>
+                <p>When used as a double tag, the part in between both tags may be used within the<br>
+                snippet itself, being substituted in place of <code>&lt;r:yield/&gt;</code>.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:snippet name="snippet_name"&gt;Lorem ipsum dolor...&lt;/r:snippet&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:status /&gt;</h4>
+              <div>
+                <p>Prints the page’s status as a string.  Optional attribute ‘downcase’<br>
+                will cause the status to be all lowercase.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:status [downcase='true'] /&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:textile /&gt;</h4>
+              <div>
+                <p>Filters its contents with the Textile filter.</p>
+                <p><strong>Usage</strong>:</p>
+                <pre><code>&lt;r:textile&gt;
+                * First
+                * Second
+                &lt;/r:textile&gt;</code></pre>
+                <p>produces:</p>
+                <pre><code>&lt;ul&gt;
+                  &lt;li&gt;First&lt;/li&gt;
+                  &lt;li&gt;Second&lt;/li&gt;
+                &lt;/ul&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:title /&gt;</h4>
+              <div><p>Renders the <code>title</code> attribute of the current page.</p></div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:unless_ancestor_or_self /&gt;</h4>
+              <div>
+                <p>Renders the contained elements unless the current contextual page is either the actual page or one of its parents.</p>
+                <p>This
+is typically used inside another tag (like &lt;r:children:each&gt;) to
+add conditional mark-up unless the child element is or descends from
+the current page.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:unless_ancestor_or_self&gt;...&lt;/r:unless_ancestor_or_self&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:unless_children /&gt;</h4>
+              <div>
+                <p>Renders the contained elements only if the current contextual page has no children.<br>
+                The <code>status</code> attribute limits the status of found child pages to the given status,<br>
+                the default is <code>"published"</code>. <code>status="all"</code> includes all non-virtual pages<br>
+                regardless of status.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:unless_children [status="published"]&gt;...&lt;/r:unless_children&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:unless_content /&gt;</h4>
+              <div>
+                <p>The opposite of the <code>if_content</code> tag. It renders the contained elements if all of the<br>
+                specified parts do not exist. Setting the optional <code>inherit</code> to true will search<br>
+                ancestors independently for each part. By default <code>inherit</code> is set to <code>false</code>.</p>
+                <p>When listing more than one part, you may optionally set the <code>find</code> attribute to <code>any</code><br>
+                so that it will not render the containing elements if any of the listed parts are found.<br>
+                By default the <code>find</code> attribute is set to <code>all</code>.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:unless_content [part="part_name, other_part"] [inherit="false"] [find="any"]&gt;...&lt;/r:unless_content&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:unless_dev /&gt;</h4>
+              <div>
+                <p>The opposite of the <code>if_dev</code> tag.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:unless_dev&gt;...&lt;/r:unless_dev&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:unless_parent /&gt;</h4>
+              <div>
+                <p>Renders the contained elements only if the current contextual page has no parent, i.e.<br>
+                is the root page.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:unless_parent&gt;...&lt;/r:unless_parent&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:unless_self /&gt;</h4>
+              <div>
+                <p>Renders the contained elements unless the current contextual page is also the actual page.</p>
+                <p>This
+is typically used inside another tag (like &lt;r:children:each&gt;) to
+add conditional mark-up unless the child element is the current page.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:unless_self&gt;...&lt;/r:unless_self&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:unless_url /&gt;</h4>
+              <div>
+                <p>The opposite of the <code>if_url</code> tag.</p>
+                <p><strong>Usage:</strong></p>
+                <pre><code>&lt;r:unless_url matches="regexp" [ignore_case="true|false"]&gt;...&lt;/r:unless_url&gt;</code></pre>
+              </div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:url /&gt;</h4>
+              <div><p>Renders the <code>url</code> attribute of the current page.</p></div>
+            </div>
+            <div style="display: none;" class="tag-description">
+              <h4>&lt;r:yield /&gt;</h4>
+              <div>
+                <p>Used within a snippet as a placeholder for substitution of child content, when<br>
+                the snippet is called as a double tag.</p>
+                <p><strong>Usage (within a snippet):</strong></p>
+                <pre><code>
+                &lt;div id="outer"&gt;
+                  &lt;p&gt;before&lt;/p&gt;
+                  &lt;r:yield/&gt;
+                  &lt;p&gt;after&lt;/p&gt;
+                &lt;/div&gt;
+                </code></pre>
+                <p>If the above snippet was named “yielding”, you could call it from any Page,<br>
+                Layout or Snippet as follows:</p>
+                <pre><code>&lt;r:snippet name="yielding"&gt;Content within&lt;/r:snippet&gt;</code></pre>
+                <p>Which would output the following:</p>
+                <pre><code>
+                &lt;div id="outer"&gt;
+                  &lt;p&gt;before&lt;/p&gt;
+                  Content within
+                  &lt;p&gt;after&lt;/p&gt;
+                &lt;/div&gt;
+                </code></pre>
+                <p>When called in the context of a Page or a Layout, <code>&lt;r:yield/&gt;</code> outputs nothing.</p>
+              </div>
+            </div>
+          </div>
+          <p>
+            <a href="#" class="close">Close</a>
+          </p>
+        </div>
+        <div class="popup" id="filter-reference-popup" style="display: none;">
+          <h3>
+            <span id="filter-type"></span>
+            Reference
+          </h3>
+          <div id="filter-reference">There is no documentation on this filter.</div>
+          <p>
+            <a href="#" class="close">Close</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body></html>

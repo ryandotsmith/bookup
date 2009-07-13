@@ -1,7 +1,3 @@
-require 'amazon/aws'
-require 'amazon/aws/search'
-require 'yaml'
-
 module AmazonProducts
   class << self
     attr_accessor :config_location
