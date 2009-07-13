@@ -1,9 +1,13 @@
 <div id="left">
 	<%= render :partial => '/sessions/session_bar'%>
+	<h2>Can't find your book?</h2>
+	<p>
+	<%= link_to "#{ image_tag'new_book_button.png'}", new_book_path %>
+	</p>
 	<h2>Categories</h2>
 	<ul>
 		<li><%= link_to "All Categories", books_url %></li>
-	<% Book.discipline_counts.each do |discipline|%>
+	<% Book.discipline_counts.sort {|a,b| a.name  <=> b.name }.each do |discipline|%>
 		<li><%= link_to discipline, books_url( :q => 'discipline', :q_selection => discipline.name ) %></li>
 	<% end %>
 	<ul>
@@ -17,7 +21,7 @@
 			</div><!--end -->
 			<% books.each do |book|%>
 				<div class="book">
-					<%= link_to image_tag( "#{ book.img_url }", :size => '100x100' ), book ,:class => 'book_cover'%>						
+					<%= link_to image_tag( "#{ book.thumbnail }" ), book ,:class => 'book_cover'%>						
 					<table>
 						<tbody>
 						  <tr>

@@ -1,8 +1,7 @@
-<div id="show_tags_link">
-	<%= link_to "show tags", "#"%>	
-</div><!--end show_tags_link-->
-
-<div id="tag_list" style='display:none;'>
+<div id="tag_list">
+	<h4>
+		Tags<%= link_to image_tag("/images/icons/edit_button.png"), edit_book_path(book), :style => 'float:right;'%>
+	</h4>
 	<ul>
 	<% book.discipline_list.each do |tag| %>
 		<li><%= link_to tag, books_url( :q => 'discipline', :q_selection => tag )%></li>
@@ -23,15 +22,4 @@
 		<li><%= link_to tag, books_url( :q => 'instructor', :q_selection => tag )%></li>
 	<% end %>
 	</ul>
-	<div id='edit_button'><%= link_to image_tag("/images/icons/edit_button.png"), edit_book_path(book)%></div>
-	<div id="close_button"><%= link_to "close", "#" %></div>
 </div><!--end tag_list-->
-<script>
-$('#show_tags_link, #close_button').click(function () {
-     if ($("#tag_list").is(":hidden")) {
-       $("#tag_list").slideDown("slow");
-		} else {
-       $("#tag_list").slideUp("slow");
-     }
-   });
-</script>

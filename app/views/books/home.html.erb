@@ -41,14 +41,11 @@
 	</div>
 
 
-	<div id="average_price">
-			<div id="average_price_text">
-				Average Book Price: <%="$" + "%.2f" % Book.average_price()%>
-			</div><!--end average_price_text-->
-	</div><!--end average_price-->
 
 	<div id="book_list">
-		<h2><%= link_to "The Book List", books_url %></h2>
+		<div id="book_list_text">
+			<%= link_to "Show Me The Books!", books_url %>			
+		</div><!--end book_list_text-->
 	</div><!--end book_list-->
 
 	<div id="footer">

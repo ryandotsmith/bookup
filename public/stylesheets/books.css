@@ -38,6 +38,18 @@
 	clear:both;
 	padding-top:40px;
 }
+#tag_list {
+	width:200px;
+	float:right;
+}
+#tag_list ul {
+	margin:5px 0 0 18px;
+	padding:0;
+}
+#tag_list li {
+	
+}
+
 /****     structure       ****/
 form {
 	padding:0 0 4em;
