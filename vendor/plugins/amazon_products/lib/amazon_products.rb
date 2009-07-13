@@ -6,10 +6,10 @@ module AmazonProducts
       @access_key_id ||= YAML.load_file(config_location)['access_key_id']
     end
   end
-  
+
   include Amazon::AWS
   include Amazon::AWS::Search
-  
+  Amazon::Config.new "cache = false"  
   module Retrieval
     def self.included(base)
       base.module_eval do
